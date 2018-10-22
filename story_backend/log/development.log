@@ -3788,3 +3788,60 @@ Processing by Api::V1::PostsController#create as JSON
 Completed 200 OK in 13ms (Views: 2.4ms | ActiveRecord: 3.5ms)
 
 
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-22 18:03:03 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/brian/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (80.16ms)
+Completed 200 OK in 137ms (Views: 110.0ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-22 18:03:16 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.54ms)
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-22 18:03:21 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"hi", "prev_post_id"=>1, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"hi", "prev_post_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "hi"], ["prev_post_id", 1], ["created_at", "2018-10-22 22:03:21.789599"], ["updated_at", "2018-10-22 22:03:21.789599"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.54ms)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 3.9ms)
+
+
+Started PATCH "/api/v1/posts/1" for 127.0.0.1 at 2018-10-22 18:03:21 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"1", "post"=>{}}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 7ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'

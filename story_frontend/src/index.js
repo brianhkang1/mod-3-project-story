@@ -115,7 +115,7 @@ function newPost(){
   container.appendChild(form);
 }
 
-function submitNewPost(){
+function submitNewPost(event){
   event.preventDefault()
   let input = event.currentTarget.children[0].value;
   let storyId = +event.currentTarget.children[1].dataset.storyId;

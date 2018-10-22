@@ -2,7 +2,7 @@ class Api::V1::StoriesController < ApplicationController
 
   before_action :find_story, only: [:show]
 
-  def index
+  def index!
     @stories = Story.all
     render json: @stories
   end
