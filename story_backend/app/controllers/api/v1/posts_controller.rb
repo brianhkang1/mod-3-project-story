@@ -12,7 +12,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    render json: Post.create(post_params)
   end
 
   def update

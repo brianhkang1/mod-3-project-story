@@ -116,8 +116,7 @@ function newPost(){
 }
 
 function submitNewPost(){
-  debugger
-
+  event.preventDefault()
   let input = event.currentTarget.children[0].value;
   let storyId = +event.currentTarget.children[1].dataset.storyId;
   let previousPostId = +event.currentTarget.children[1].dataset.previousPostId;
@@ -125,7 +124,8 @@ function submitNewPost(){
 
   let body = {content: input, prev_post_id: previousPostId, story_id: storyId}
 
-  postNewPost(body).then(newPost => {
+  postNewPost(body)
+  .then(newPost => {
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
 

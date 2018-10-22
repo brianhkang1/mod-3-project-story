@@ -11,18 +11,17 @@ function fetchPost(postId){
 function postNewPost(body){
   return fetch('http://localhost:3000/api/v1/posts/', {
     method: "POST",
-
     headers: {
-      "Content-Type" : "application/json"
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     },
-
     body: JSON.stringify(body)
-  }).then(res => res.json())
+  }).then(res => {
+    return res.json()
+  })
 }
 
-function patchOldPost(postId, newPostId, newPostIds){
-  debugger
-
+function patchOldPost(postId, newPostId, nextPostIds){
 
   return fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
     method: "PATCH",
@@ -32,7 +31,7 @@ function patchOldPost(postId, newPostId, newPostIds){
     },
 
     body: JSON.stringify({
-      // next_post_ids: +=
+      //START HERE TOMORROW
     })
   })
 }
