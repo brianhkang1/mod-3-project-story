@@ -12,7 +12,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    @post.create(post_params)
+    Post.create(post_params)
   end
 
   def update
@@ -20,6 +20,7 @@ class Api::V1::PostsController < ApplicationController
       @post.update(post_params)
     else
       render json: { errors: @post.errors.full_messages }, status: :unprocessible_entity
+    end
   end
 
   private
