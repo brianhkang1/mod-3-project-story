@@ -66,8 +66,9 @@ function createButtons(post){
     createNewPostButton.innerText = "Create New Post";
     createNewPostButton.dataset.storyId = post.story.id;
     createNewPostButton.dataset.previousPostId = post.id;
+    createNewPostButton.dataset.nextPostIds = post.next_post_ids;
     storySelector.appendChild(createNewPostButton)
-    createNewPostButton.addEventListener('click', nextPage)
+    createNewPostButton.addEventListener('click', newPost)
   }
 
   let backButton = document.createElement('button');
@@ -84,5 +85,48 @@ function nextPage(){
   debugger
 }
 
+
 function previousPage(){
+debugger
+}
+
+
+function newPost(){
+
+  let storyId = event.currentTarget.dataset.storyId;
+  let previousPostId  = event.currentTarget.dataset.previousPostId;
+  let nextPostIds = event.currentTarget.dataset.nextPostIds;
+
+  let container = document.querySelector('.story-container')
+  container.innerHTML = "";
+
+  let form = document.createElement('form');
+  let contentInput = document.createElement('input');
+  form.appendChild(contentInput);
+
+  let submit = document.createElement('input');
+  submit.type = "submit";
+  submit.dataset.storyId = storyId;
+  submit.dataset.previousPostId = previousPostId;
+  submit.dataset.nextPostIds = nextPostIds;
+  form.appendChild(submit);
+  form.addEventListener('submit', submitNewPost)
+
+  container.appendChild(form);
+}
+
+function submitNewPost(){
+  debugger
+
+  let input = event.currentTarget.children[0].value;
+  let storyId = +event.currentTarget.children[1].dataset.storyId;
+  let previousPostId = +event.currentTarget.children[1].dataset.previousPostId;
+  let nextPostIds = event.currentTarget.children[1].dataset.nextPostIds;
+
+  let body = {content: input, prev_post_id: previousPostId, story_id: storyId}
+
+  postNewPost(body).then(newPost => {
+    patchOldPost(previousPostId, newPost.id, nextPostIds)
+  })
+
 }
