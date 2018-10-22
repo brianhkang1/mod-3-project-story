@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 
   before_action :find_post, only: [:show, :update]
 
-  def index!
+  def index
     @posts = Post.all
     render json: @posts
   end
