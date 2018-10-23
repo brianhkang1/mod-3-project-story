@@ -1,4 +1,8 @@
-.center-screen {
+body, button {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.center-screen,  div.center-screen.zoom-story{
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -8,12 +12,42 @@
 }
 
 .custom-header {
+  background-color: crimson;
   border-bottom-style: solid;
   border-width: 1px;
-  padding:none;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 img {
   width: 50px;
   height: 50px;
+  padding-top: 18px;
 }
+
+[class^=story-div] {
+  text-align: center;
+  /* border: grey solid 1px; */
+  /* padding: 1rem; */
+  width: 20%;
+  display: inline-grid;
+  justify-content: center;
+}
+
+.row .col-9{
+  display: inline;
+  font-size: 40px;
+}
+
+#new-story-button {
+  padding: none;
+  position: fixed;
+  display: inline;
+  right: 0;
+  height: 82px;
+  width: 82px;
+}
+
+/* .col-3 {
+  padding: none;
+} */

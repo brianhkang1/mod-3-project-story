@@ -11,9 +11,10 @@ function renderStories(){
 
 function renderNewStoryButton(){
   let newDiv = document.createElement("div")
-  newDiv.classList.add("col-3")
-  let newStoryButton = document.createElement('button');
-  newStoryButton.innerText = "Begin A New Story!";
+  newDiv.id = "new-story-button";
+  // newDiv.classList.add("col-3")
+  let newStoryButton = document.createElement('img');
+  newStoryButton.src = "./doodles/writing.svg";
   newStoryButton.addEventListener('click', newStoryHandler)
   newDiv.appendChild(newStoryButton);
   document.querySelector(".custom-header").appendChild(newDiv)
@@ -61,21 +62,30 @@ function renderStory(story){
   storyDiv.classList.add(`story-div-${story.id}`);
   document.querySelector('.story-container').appendChild(storyDiv)
 
+  // add image
+  let img = document.createElement('img');
+  img.src = story.img_url;
+
+
+  img.dataset.postId = story.posts.filter(post => {
+    return post.prev_post_id === null})[0].id
+  storyDiv.appendChild(img);
+
   //add story title
-  let title = document.createElement('h2');
-  title.innerText = story.title;
-  storyDiv.appendChild(title);
+  // let title = document.createElement('h2');
+  // title.innerText = story.title;
+  // storyDiv.appendChild(title);
 
   //add story content
-  let opening = document.createElement('p');
-  opening.innerText = `${story.posts[0].content}...`;
-  opening.dataset.postId = story.posts[0].id
-  storyDiv.appendChild(opening);
+  // let opening = document.createElement('p');
+  // opening.innerText = `${story.posts[0].content}...`;
+  // storyDiv.appendChild(opening);
   document.querySelector(`.story-div-${story.id}`).addEventListener('click', firstPostListener)
 }
 
 function firstPostListener(){
-  let postId = event.currentTarget.querySelector("p").dataset.postId
+
+  let postId = event.currentTarget.querySelector("img").dataset.postId
   fetchPost(postId)
   .then(post => {
     renderZoomPost(post)
@@ -85,6 +95,7 @@ function firstPostListener(){
 function renderZoomPost(post){
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
+
   zoomStory.classList.add('center-screen', 'zoom-story');
   document.querySelector('.story-container').appendChild(zoomStory)
 
@@ -121,6 +132,7 @@ function createButtons(post){
     createNewPostButton.addEventListener('click', newPost)
 
   } else {
+
     let next_post_array = post.next_post_ids.slice(1, -1).split(", ").map(num => parseInt(num));
 
     if (next_post_array.length < 3){
