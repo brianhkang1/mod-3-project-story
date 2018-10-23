@@ -22,6 +22,14 @@ function postNewPost(body){
 }
 
 function patchOldPost(postId, newPostId, nextPostIds){
+  if (!nextPostIds){
+    body = {next_post_ids: `[${newPostId}]`}
+  } else {
+    debugger
+    nextPostIds
+  }
+
+  body = {}
 
   return fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
     method: "PATCH",

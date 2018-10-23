@@ -31,45 +31,51 @@ function firstPostListener(){
   let postId = event.currentTarget.querySelector("p").dataset.postId
   fetchPost(postId)
   .then(post => {
-    //select and enlarge story to follow
-    document.querySelector('.story-container').innerHTML = "";
-    let zoomStory = document.createElement('div');
-    zoomStory.classList.add('zoom-story');
-    document.querySelector('.story-container').appendChild(zoomStory)
-
-    //add title
-    // let title = document.createElement('h2');
-    // title.innerText = post.story.title
-    // zoomStory.appendChild(title);
-
-    //add first line
-    let opening = document.createElement('p');
-    opening.innerText = post.content + "..."
-    zoomStory.appendChild(opening);
-
-    createButtons(post)
+    renderZoomPost(post)
   })
+}
+
+function renderZoomPost(post){
+  document.querySelector('.story-container').innerHTML = "";
+  let zoomStory = document.createElement('div');
+  zoomStory.classList.add('zoom-story');
+  document.querySelector('.story-container').appendChild(zoomStory)
+
+  //add first line
+  let opening = document.createElement('p');
+  opening.innerText = post.content + "..."
+  zoomStory.appendChild(opening);
+
+  createButtons(post)
 }
 
 function createButtons(post){
   let storySelector = document.querySelector(".zoom-story")
 
   if (post.next_post_ids){
-    let forwardButton = document.createElement('button');
-    forwardButton.innerText = "next page";
-    forwardButton.dataset.storyId = post.story.id;
-    forwardButton.dataset.previousPostId = post.id;
-    storySelector.appendChild(forwardButton)
-    forwardButton.addEventListener('click', nextPage)
+    let next_post_array = post.next_post_ids.slice(1, -1).split(", ").map(num => parseInt(num))
+
+    next_post_array.forEach(function(postId) {
+    fetchPost(postId)
+      .then(function(post){
+        let forwardButton = document.createElement('button');
+        forwardButton.innerText = post.content;
+        forwardButton.dataset.storyId = post.story.id;
+        forwardButton.dataset.previousPostId = post.prev_post_id;
+        forwardButton.dataset.currentPostId = post.id;
+        storySelector.appendChild(forwardButton)
+        forwardButton.addEventListener('click', nextPage)
+      })
+    })
   } else {
-    let createNewPostButton = document.createElement('button');
-    createNewPostButton.innerText = "Create New Post";
-    createNewPostButton.dataset.storyId = post.story.id;
-    createNewPostButton.dataset.previousPostId = post.id;
-    createNewPostButton.dataset.nextPostIds = post.next_post_ids;
-    storySelector.appendChild(createNewPostButton)
-    createNewPostButton.addEventListener('click', newPost)
-  }
+      let createNewPostButton = document.createElement('button');
+      createNewPostButton.innerText = "Create New Post";
+      createNewPostButton.dataset.storyId = post.story.id;
+      createNewPostButton.dataset.previousPostId = post.id;
+      createNewPostButton.dataset.nextPostIds = post.next_post_ids;
+      storySelector.appendChild(createNewPostButton)
+      createNewPostButton.addEventListener('click', newPost)
+    }
 
   let backButton = document.createElement('button');
   backButton.innerText = "previous page";
@@ -78,16 +84,17 @@ function createButtons(post){
   backButton.dataset.nextPostId = post.id;
   storySelector.appendChild(backButton)
   backButton.addEventListener('click', previousPage)
+
 }
 
-
 function nextPage(){
-  debugger
+  fetchPost(event.currentTarget.dataset.currentPostId)
+    .then(post => renderZoomPost(post))
 }
 
 
 function previousPage(){
-debugger
+  debugger
 }
 
 
