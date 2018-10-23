@@ -9,7 +9,6 @@ function fetchPost(postId){
 }
 
 function postNewPost(body){
-  debugger
   return fetch('http://localhost:3000/api/v1/posts/', {
     method: "POST",
     headers: {

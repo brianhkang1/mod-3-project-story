@@ -10,15 +10,16 @@ function renderStories(){
 }
 
 function renderNewStoryButton(){
+  let newDiv = document.createElement("div")
+  newDiv.classList.add("col-3")
   let newStoryButton = document.createElement('button');
   newStoryButton.innerText = "Begin A New Story!";
   newStoryButton.addEventListener('click', newStoryHandler)
-  document.querySelector('.story-container').appendChild(newStoryButton);
+  newDiv.appendChild(newStoryButton);
+  document.querySelector(".custom-header").appendChild(newDiv)
 }
 
 function newStoryHandler(){
-
-
   let container = document.querySelector('.story-container')
   container.innerHTML = "";
 
@@ -45,12 +46,12 @@ function newStoryListener(event){
   let newPostContent = event.currentTarget.children[1].value;
 
   postNewStory(title).then(newStory => {
-    debugger
     let body = {
       content: newPostContent,
       story_id: newStory.id
     }
     postNewPost(body)
+      .then(newPost => renderZoomPost(newPost))
   })
 }
 
@@ -84,7 +85,7 @@ function firstPostListener(){
 function renderZoomPost(post){
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
-  zoomStory.classList.add('zoom-story');
+  zoomStory.classList.add('center-screen', 'zoom-story');
   document.querySelector('.story-container').appendChild(zoomStory)
 
   //add first line
@@ -175,7 +176,6 @@ function previousPage(){
 
 
 function newPost(){
-
   let storyId = event.currentTarget.dataset.storyId;
   let previousPostId  = event.currentTarget.dataset.previousPostId;
   let nextPostIds = event.currentTarget.dataset.nextPostIds;
@@ -184,7 +184,9 @@ function newPost(){
   container.innerHTML = "";
 
   let form = document.createElement('form');
+  form.classList.add("center-screen")
   let contentInput = document.createElement('input');
+  contentInput.placeholder = "Continue story"
   form.appendChild(contentInput);
 
   let submit = document.createElement('input');

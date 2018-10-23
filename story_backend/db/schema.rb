@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_144741) do
     t.string "content"
     t.integer "prev_post_id"
     t.string "next_post_ids"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
