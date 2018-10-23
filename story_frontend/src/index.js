@@ -1,10 +1,56 @@
 document.addEventListener("DOMContentLoaded", function(){
+  renderNewStoryButton();
   renderStories();
 })
 
 function renderStories(){
   fetchAllStories().then(data => {
     data.forEach(renderStory)
+  })
+}
+
+function renderNewStoryButton(){
+  let newStoryButton = document.createElement('button');
+  newStoryButton.innerText = "Begin A New Story!";
+  newStoryButton.addEventListener('click', newStoryHandler)
+  document.querySelector('.story-container').appendChild(newStoryButton);
+}
+
+function newStoryHandler(){
+
+
+  let container = document.querySelector('.story-container')
+  container.innerHTML = "";
+
+  let form = document.createElement('form');
+  let titleInput = document.createElement('input');
+  titleInput.placeholder = "title"
+  form.appendChild(titleInput);
+
+  let firstPostInput = document.createElement('input');
+  firstPostInput.placeholder = "first line of your story"
+  form.appendChild(firstPostInput);
+
+  let submit = document.createElement('input');
+  submit.type = "submit";
+  form.appendChild(submit);
+  form.addEventListener('submit', newStoryListener)
+  container.appendChild(form);
+}
+
+function newStoryListener(event){
+  event.preventDefault();
+
+  let title = event.currentTarget.children[0].value;
+  let newPostContent = event.currentTarget.children[1].value;
+
+  postNewStory(title).then(newStory => {
+    debugger
+    let body = {
+      content: newPostContent,
+      story_id: newStory.id
+    }
+    postNewPost(body)
   })
 }
 
@@ -50,24 +96,33 @@ function renderZoomPost(post){
 }
 
 function createButtons(post){
-  let storySelector = document.querySelector(".zoom-story")
 
-  if (post.next_post_ids){
-    let next_post_array = post.next_post_ids.slice(1, -1).split(", ").map(num => parseInt(num))
+  let storySelector = document.querySelector(".zoom-story");
 
-    next_post_array.forEach(function(postId) {
-    fetchPost(postId)
-      .then(function(post){
-        let forwardButton = document.createElement('button');
-        forwardButton.innerText = post.content;
-        forwardButton.dataset.storyId = post.story.id;
-        forwardButton.dataset.previousPostId = post.prev_post_id;
-        forwardButton.dataset.currentPostId = post.id;
-        storySelector.appendChild(forwardButton)
-        forwardButton.addEventListener('click', nextPage)
-      })
-    })
+  if (post.prev_post_id){
+    let backButton = document.createElement('button');
+    backButton.innerText = "previous page";
+
+    backButton.dataset.storyId = post.story.id;
+    backButton.dataset.previousPostId = post.prev_post_id;
+    backButton.dataset.nextPostId = post.id;
+    storySelector.appendChild(backButton)
+    backButton.addEventListener('click', previousPage)
+  };
+
+  if (post.next_post_ids === null) {
+    let createNewPostButton = document.createElement('button');
+    createNewPostButton.innerText = "Create New Post";
+    createNewPostButton.dataset.storyId = post.story.id;
+    createNewPostButton.dataset.previousPostId = post.id;
+    createNewPostButton.dataset.nextPostIds = post.next_post_ids;
+    storySelector.appendChild(createNewPostButton)
+    createNewPostButton.addEventListener('click', newPost)
+
   } else {
+    let next_post_array = post.next_post_ids.slice(1, -1).split(", ").map(num => parseInt(num));
+
+    if (next_post_array.length < 3){
       let createNewPostButton = document.createElement('button');
       createNewPostButton.innerText = "Create New Post";
       createNewPostButton.dataset.storyId = post.story.id;
@@ -75,17 +130,36 @@ function createButtons(post){
       createNewPostButton.dataset.nextPostIds = post.next_post_ids;
       storySelector.appendChild(createNewPostButton)
       createNewPostButton.addEventListener('click', newPost)
+
+      next_post_array.forEach(function(postId) {
+        fetchPost(postId)
+        .then(function(post){
+          let forwardButton = document.createElement('button');
+          forwardButton.innerText = post.content;
+          forwardButton.dataset.storyId = post.story.id;
+          forwardButton.dataset.previousPostId = post.prev_post_id;
+          forwardButton.dataset.currentPostId = post.id;
+          storySelector.appendChild(forwardButton)
+          forwardButton.addEventListener('click', nextPage)
+        })
+      })
+
+    } else {
+      next_post_array.forEach(function(postId) {
+        fetchPost(postId)
+        .then(function(post){
+          let forwardButton = document.createElement('button');
+          forwardButton.innerText = post.content;
+          forwardButton.dataset.storyId = post.story.id;
+          forwardButton.dataset.previousPostId = post.prev_post_id;
+          forwardButton.dataset.currentPostId = post.id;
+          storySelector.appendChild(forwardButton)
+          forwardButton.addEventListener('click', nextPage)
+        })
+      })
     }
-
-  let backButton = document.createElement('button');
-  backButton.innerText = "previous page";
-
-  backButton.dataset.storyId = post.story.id;
-  backButton.dataset.nextPostId = post.id;
-  storySelector.appendChild(backButton)
-  backButton.addEventListener('click', previousPage)
-
-}
+  }
+  }
 
 function nextPage(){
   fetchPost(event.currentTarget.dataset.currentPostId)
@@ -94,7 +168,9 @@ function nextPage(){
 
 
 function previousPage(){
-  debugger
+  let postId = parseInt(event.currentTarget.dataset.previousPostId);
+
+  fetchPost(postId).then(post => renderZoomPost(post))
 }
 
 
@@ -133,6 +209,7 @@ function submitNewPost(event){
 
   postNewPost(body)
   .then(newPost => {
+    renderZoomPost(newPost);
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
 

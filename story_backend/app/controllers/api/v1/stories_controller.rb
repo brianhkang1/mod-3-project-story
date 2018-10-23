@@ -12,6 +12,7 @@ class Api::V1::StoriesController < ApplicationController
   end
 
   def create
+    render json: Story.create(story_params)
   end
 
   private

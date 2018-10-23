@@ -5021,3 +5021,2354 @@ Processing by Api::V1::PostsController#show as */*
 Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:24:51 -0400
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (2.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (39.8ms)
+Completed 200 OK in 90ms (Views: 60.3ms | ActiveRecord: 22.2ms)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (254.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Story_development"[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (205.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Story_test"[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (702.0ms)[0m  [1m[35mCREATE DATABASE "Story_development" ENCODING = 'unicode'[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (451.3ms)[0m  [1m[35mCREATE DATABASE "Story_test" ENCODING = 'unicode'[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35mSQL (1.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "story_id" integer, "content" character varying, "prev_post_id" integer, "next_post_ids" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "stories" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "stories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181022144741)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181022144704);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-23 14:25:23.362527"], ["updated_at", "2018-10-23 14:25:23.362527"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "story_id" integer, "content" character varying, "prev_post_id" integer, "next_post_ids" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "stories" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "stories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181022144741)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181022144704);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-23 14:25:23.435819"], ["updated_at", "2018-10-23 14:25:23.435819"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2018-10-23 14:25:23.440747"], ["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mStory Create (0.9ms)[0m  [1m[32mINSERT INTO "stories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Goldilocks"], ["created_at", "2018-10-23 14:25:23.488954"], ["updated_at", "2018-10-23 14:25:23.488954"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "next_post_ids", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "There once was a girl"], ["next_post_ids", "[2, 3]"], ["created_at", "2018-10-23 14:25:23.515209"], ["updated_at", "2018-10-23 14:25:23.515209"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (5.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She went to the woods"], ["prev_post_id", 1], ["created_at", "2018-10-23 14:25:23.525651"], ["updated_at", "2018-10-23 14:25:23.525651"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She hates bears"], ["prev_post_id", 1], ["created_at", "2018-10-23 14:25:23.529797"], ["updated_at", "2018-10-23 14:25:23.529797"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:25:29 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.79ms)
+Completed 200 OK in 57ms (Views: 41.9ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:25:34 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.22ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:26:02 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.22ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:26:06 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.81ms)
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:26:06 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:26:06 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.64ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.3ms)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.39ms)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:26:07 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:28:01 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.02ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:28:02 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.17ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:28:02 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:28:02 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.24ms)
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.39ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 2.0ms)
+
+
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:28:04 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.61ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:29:34 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.16ms)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:29:36 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.33ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:29:36 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:29:36 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (4.65ms)
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 3.4ms)
+
+
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.45ms)
+Completed 200 OK in 9ms (Views: 3.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:29:37 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.74ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:29:41 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.78ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:29:41 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:29:41 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.47ms)
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.7ms)
+
+
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.33ms)
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/posts/NaN" for 127.0.0.1 at 2018-10-23 10:29:44 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"NaN"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=NaN):
+  
+app/controllers/api/v1/posts_controller.rb:33:in `find_post'
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:29:58 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.4ms)
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:29:59 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.22ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:29:59 -0400
+Processing by Api::V1::PostsController#show as */*
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:29:59 -0400
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"id"=>"3"}
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.28ms)
+[active_model_serializers]   [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 1.7ms)
+
+
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.37ms)
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:30:00 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.6ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:30:49 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (7.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.4ms)
+Completed 200 OK in 15ms (Views: 5.3ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:30:50 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.0ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:30:50 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:30:50 -0400
+[active_model_serializers]   [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (4.03ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 1.8ms)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (4.29ms)
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:30:51 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.98ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:30:53 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.6ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:30:53 -0400
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:30:53 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.91ms)
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.26ms)
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 2.2ms)
+
+
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:30:54 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.24ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:31:25 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She came across a house", "prev_post_id"=>3, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She came across a house", "prev_post_id"=>3}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She came across a house"], ["prev_post_id", 3], ["created_at", "2018-10-23 14:31:25.553317"], ["updated_at", "2018-10-23 14:31:25.553317"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 2.9ms)
+
+
+Started PATCH "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:33:44 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"3", "post"=>{}}
+  [1m[36mPost Load (4.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:33:44 -0400
+  [1m[35m (22.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 34ms (ActiveRecord: 28.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:33:45 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.5ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:33:45 -0400
+Processing by Api::V1::PostsController#show as */*
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:33:45 -0400
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.72ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.6ms)
+
+
+[active_model_serializers]   [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.02ms)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:33:46 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.45ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:34:14 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She walked into the house", "prev_post_id"=>2, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She walked into the house", "prev_post_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She walked into the house"], ["prev_post_id", 2], ["created_at", "2018-10-23 14:34:14.008761"], ["updated_at", "2018-10-23 14:34:14.008761"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 2.6ms)
+
+
+Started PATCH "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:34:14 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"2", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:34:40 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (5.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.62ms)
+Completed 200 OK in 12ms (Views: 6.2ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:34:47 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.74ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:34:47 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:34:47 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.4ms)
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.14ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.8ms)
+
+
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:34:49 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.54ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:34:58 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She went inside", "prev_post_id"=>3, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She went inside", "prev_post_id"=>3}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She went inside"], ["prev_post_id", 3], ["created_at", "2018-10-23 14:34:58.708980"], ["updated_at", "2018-10-23 14:34:58.708980"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 3.1ms)
+
+
+Started PATCH "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:34:58 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"3", "post"=>{}}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:35:36 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.3ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:35:36 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.41ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:35:36 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:35:36 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.47ms)
+[active_model_serializers]   [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.29ms)
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:35:37 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.57ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:35:41 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She walked in", "prev_post_id"=>2, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She walked in", "prev_post_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She walked in"], ["prev_post_id", 2], ["created_at", "2018-10-23 14:35:41.886375"], ["updated_at", "2018-10-23 14:35:41.886375"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 2.6ms)
+
+
+Started PATCH "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:44:24 -0400
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:44:24 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"2", "post"=>{}}
+  [1m[36mPost Load (3.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 10ms (ActiveRecord: 5.6ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.95ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:45:29 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (2.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.11ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:46:49 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.3ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.48ms)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:46:50 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.71ms)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:46:50 -0400
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:46:50 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+Processing by Api::V1::PostsController#show as */*
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Parameters: {"id"=>"2"}
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (4.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (6.7ms)
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+Completed 200 OK in 13ms (Views: 4.1ms | ActiveRecord: 6.1ms)
+
+
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (6.05ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:46:51 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.4ms)
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:46:57 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"hey there", "prev_post_id"=>3, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"hey there", "prev_post_id"=>3}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "hey there"], ["prev_post_id", 3], ["created_at", "2018-10-23 14:46:57.711416"], ["updated_at", "2018-10-23 14:46:57.711416"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 4.6ms)
+
+
+Started PATCH "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:49:49 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"id"=>"3", "post"=>{}}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (2.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+Completed 400 Bad Request in 11ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/posts_controller.rb:29:in `post_params'
+app/controllers/api/v1/posts_controller.rb:20:in `update'
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:49:49 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.52ms)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:49:50 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.86ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:49:50 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:49:50 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (4.11ms)
+[active_model_serializers]   [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.8ms)
+
+
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (4.19ms)
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:49:51 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.88ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 10:49:57 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She sat down!", "prev_post_id"=>2, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She sat down!", "prev_post_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She sat down!"], ["prev_post_id", 2], ["created_at", "2018-10-23 14:49:57.196025"], ["updated_at", "2018-10-23 14:49:57.196025"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 3.1ms)
+
+
+Started PATCH "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:49:57 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"next_post_ids"=>"[9]", "id"=>"2", "post"=>{"next_post_ids"=>"[9]"}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "next_post_ids" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["next_post_ids", "[9]"], ["updated_at", "2018-10-23 14:49:57.211346"], ["id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+Completed 204 No Content in 8ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:49:59 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.85ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 10:51:05 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.11ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 10:51:06 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.75ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:51:06 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 10:51:06 -0400
+Processing by Api::V1::PostsController#show as */*
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"id"=>"3"}
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.07ms)
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 1.8ms)
+
+
+[active_model_serializers]   [1m[36mStory Load (1.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.21ms)
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 10:51:07 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.65ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/posts/9" for 127.0.0.1 at 2018-10-23 10:51:07 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.07ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:11:39 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (2.1ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.31ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:11:40 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:11:40 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:11:40 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.31ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.11ms)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:11:59 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.32ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/posts/9" for 127.0.0.1 at 2018-10-23 11:11:59 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.74ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:12:04 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.46ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:12:04 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:12:04 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.64ms)
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 4.2ms)
+
+
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.92ms)
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 11:12:18 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"She gave up", "prev_post_id"=>1, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"She gave up", "prev_post_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She gave up"], ["prev_post_id", 1], ["created_at", "2018-10-23 15:12:18.578504"], ["updated_at", "2018-10-23 15:12:18.578504"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 21ms (Views: 1.2ms | ActiveRecord: 15.6ms)
+
+
+Started PATCH "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:12:18 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"next_post_ids"=>"2,3,10", "id"=>"1", "post"=>{"next_post_ids"=>"2,3,10"}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[36mPost Update (0.4ms)[0m  [1m[33mUPDATE "posts" SET "next_post_ids" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["next_post_ids", "2,3,10"], ["updated_at", "2018-10-23 15:12:18.608421"], ["id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+Completed 204 No Content in 6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:12:34 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.37ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.9ms)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (231.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Story_development"[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (212.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Story_test"[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (608.1ms)[0m  [1m[35mCREATE DATABASE "Story_development" ENCODING = 'unicode'[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (330.0ms)[0m  [1m[35mCREATE DATABASE "Story_test" ENCODING = 'unicode'[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "story_id" integer, "content" character varying, "prev_post_id" integer, "next_post_ids" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "stories" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "stories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181022144741)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181022144704);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-23 15:14:19.094435"], ["updated_at", "2018-10-23 15:14:19.094435"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "story_id" integer, "content" character varying, "prev_post_id" integer, "next_post_ids" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "stories" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "stories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181022144741)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181022144704);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (5.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-23 15:14:19.205968"], ["updated_at", "2018-10-23 15:14:19.205968"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2018-10-23 15:14:19.219020"], ["key", "environment"]]
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mStory Create (1.6ms)[0m  [1m[32mINSERT INTO "stories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Goldilocks"], ["created_at", "2018-10-23 15:14:19.293544"], ["updated_at", "2018-10-23 15:14:19.293544"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "next_post_ids", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "There once was a girl"], ["next_post_ids", "[2, 3]"], ["created_at", "2018-10-23 15:14:19.345475"], ["updated_at", "2018-10-23 15:14:19.345475"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She went to the woods"], ["prev_post_id", 1], ["created_at", "2018-10-23 15:14:19.349730"], ["updated_at", "2018-10-23 15:14:19.349730"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "She hates bears"], ["prev_post_id", 1], ["created_at", "2018-10-23 15:14:19.353327"], ["updated_at", "2018-10-23 15:14:19.353327"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:14:33 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/angelicawinkler/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (68.46ms)
+Completed 200 OK in 109ms (Views: 85.9ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:14:37 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.94ms)
+Completed 200 OK in 13ms (Views: 7.5ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:14:38 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.48ms)
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:14:38 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:14:38 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.6ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.8ms)
+
+
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.06ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:14:41 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.98ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:16:20 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.57ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:16:21 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.96ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:17:07 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:17:07 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (3.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (5.07ms)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 1.3ms)
+
+
+[active_model_serializers]   [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (5.79ms)
+Completed 200 OK in 13ms (Views: 5.4ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:17:10 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.45ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:17:33 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.1ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:17:34 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.42ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:17:36 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:17:36 -0400
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+[active_model_serializers]   [1m[36mStory Load (2.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (5.6ms)
+Completed 200 OK in 11ms (Views: 4.4ms | ActiveRecord: 4.1ms)
+
+
+  [1m[36mPost Load (3.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (5.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (7.93ms)
+Completed 200 OK in 14ms (Views: 3.5ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:17:38 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.96ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 11:18:01 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"she died", "prev_post_id"=>3, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"she died", "prev_post_id"=>3}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "she died"], ["prev_post_id", 3], ["created_at", "2018-10-23 15:18:01.503052"], ["updated_at", "2018-10-23 15:18:01.503052"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:18:01 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"next_post_ids"=>"[4]", "id"=>"3", "post"=>{"next_post_ids"=>"[4]"}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "next_post_ids" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["next_post_ids", "[4]"], ["updated_at", "2018-10-23 15:18:01.521436"], ["id", 3]]
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+Completed 204 No Content in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:18:07 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.88ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:19:39 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (2.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (8.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.56ms)
+Completed 200 OK in 19ms (Views: 8.2ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:19:40 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.96ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:19:40 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:19:40 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.45ms)
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.8ms)
+
+
+[active_model_serializers]   [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.68ms)
+Completed 200 OK in 8ms (Views: 2.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:19:41 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.99ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 11:19:49 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"she came back to life", "prev_post_id"=>2, "story_id"=>1, "post"=>{"story_id"=>1, "content"=>"she came back to life", "prev_post_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "prev_post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["story_id", 1], ["content", "she came back to life"], ["prev_post_id", 2], ["created_at", "2018-10-23 15:19:49.091412"], ["updated_at", "2018-10-23 15:19:49.091412"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 15ms (Views: 1.2ms | ActiveRecord: 8.6ms)
+
+
+Started PATCH "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:19:49 -0400
+Processing by Api::V1::PostsController#update as */*
+  Parameters: {"next_post_ids"=>"[5]", "id"=>"2", "post"=>{"next_post_ids"=>"[5]"}}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "next_post_ids" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["next_post_ids", "[5]"], ["updated_at", "2018-10-23 15:19:49.121973"], ["id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:20
+Completed 204 No Content in 9ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:19:53 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.06ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/posts/5" for 127.0.0.1 at 2018-10-23 11:19:53 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.51ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:20:03 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.99ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:20:03 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:20:03 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::PostsController#show as */*
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Parameters: {"id"=>"3"}
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.98ms)
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 1.5ms)
+
+
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (3.12ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:20:21 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.29ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/posts/5" for 127.0.0.1 at 2018-10-23 11:20:21 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.72ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/posts/1" for 127.0.0.1 at 2018-10-23 11:20:24 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.56ms)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/posts/2" for 127.0.0.1 at 2018-10-23 11:20:24 -0400
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:20:24 -0400
+Processing by Api::V1::PostsController#show as */*
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"2"}
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.68ms)
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.04ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.7ms)
+
+
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/posts/3" for 127.0.0.1 at 2018-10-23 11:20:25 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.42ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/posts/4" for 127.0.0.1 at 2018-10-23 11:20:25 -0400
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:33
+[active_model_serializers]   [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:11
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (2.25ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:23:51 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (4.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.74ms)
+Completed 200 OK in 12ms (Views: 6.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:25:42 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.17ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:25:55 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.63ms)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:25:56 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.83ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:29:24 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.31ms)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:30:59 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.19ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:31:20 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.38ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:32:50 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (10.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (8.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.36ms)
+Completed 200 OK in 26ms (Views: 6.9ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:32:56 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (2.1ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (6.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.7ms)
+Completed 200 OK in 15ms (Views: 6.7ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:33:35 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.31ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:35:59 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.3ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.79ms)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:36:20 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.21ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:36:35 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.41ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:37:00 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (3.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.56ms)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:46:08 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.92ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:46:23 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:46:23 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.87ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:46:25 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.09ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:49:05 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (3.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.76ms)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:49:18 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:49:18 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.48ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:50:20 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (5.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.51ms)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:50:27 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:52:06 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (7.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.28ms)
+Completed 200 OK in 16ms (Views: 7.1ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:52:14 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.13ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:52:23 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:53:27 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.32ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:53:35 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:54:06 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (4.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.12ms)
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:55:16 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:55:16 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.88ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:55:25 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 11:57:31 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (4.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.34ms)
+Completed 200 OK in 12ms (Views: 5.8ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 11:57:40 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:03:53 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.5ms)
+Completed 200 OK in 11ms (Views: 7.5ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 12:04:20 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:06:39 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.8ms)
+Completed 200 OK in 57ms (Views: 28.1ms | ActiveRecord: 24.7ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 12:06:48 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"peter pan", "story"=>{"title"=>"peter pan"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[36mStory Create (0.7ms)[0m  [1m[32mINSERT INTO "stories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "peter pan"], ["created_at", "2018-10-23 16:06:48.187501"], ["updated_at", "2018-10-23 16:06:48.187501"]]
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[35m (9.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers] Rendered StorySerializer with ActiveModelSerializers::Adapter::Attributes (2.51ms)
+Completed 200 OK in 17ms (Views: 2.9ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:07:22 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.49ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:07:24 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.2ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 12:07:44 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"cinderella", "story"=>{"title"=>"cinderella"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[36mStory Create (0.9ms)[0m  [1m[32mINSERT INTO "stories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "cinderella"], ["created_at", "2018-10-23 16:07:44.644814"], ["updated_at", "2018-10-23 16:07:44.644814"]]
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers] Rendered StorySerializer with ActiveModelSerializers::Adapter::Attributes (1.78ms)
+Completed 200 OK in 9ms (Views: 2.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:08:38 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (10.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.83ms)
+Completed 200 OK in 24ms (Views: 11.6ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:08:42 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.79ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/stories/" for 127.0.0.1 at 2018-10-23 12:08:52 -0400
+Processing by Api::V1::StoriesController#create as JSON
+  Parameters: {"title"=>"toy story", "story"=>{"title"=>"toy story"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[36mStory Create (0.4ms)[0m  [1m[32mINSERT INTO "stories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "toy story"], ["created_at", "2018-10-23 16:08:52.101728"], ["updated_at", "2018-10-23 16:08:52.101728"]]
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:15
+[active_model_serializers] Rendered StorySerializer with ActiveModelSerializers::Adapter::Attributes (1.81ms)
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/v1/posts/" for 127.0.0.1 at 2018-10-23 12:09:23 -0400
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"content"=>"there were some toys", "story_id"=>4, "post"=>{"story_id"=>4, "content"=>"there were some toys"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("story_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["story_id", 4], ["content", "there were some toys"], ["created_at", "2018-10-23 16:09:23.746945"], ["updated_at", "2018-10-23 16:09:23.746945"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.2ms)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:09:25 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.83ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2018-10-23 12:09:56 -0400
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mCACHE Story Load (0.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mCACHE Story Load (0.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mCACHE Story Load (0.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mCACHE Story Load (0.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers]   [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/posts_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.24ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:10:12 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.33ms)
+Completed 200 OK in 17ms (Views: 11.0ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:10:53 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (3.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.59ms)
+Completed 200 OK in 18ms (Views: 12.9ms | ActiveRecord: 4.6ms)
+
+
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Destroy (0.6ms)[0m  [1m[31mDELETE FROM "stories" WHERE "stories"."id" = $1[0m  [["id", 2]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Destroy (2.2ms)[0m  [1m[31mDELETE FROM "stories" WHERE "stories"."id" = $1[0m  [["id", 3]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:12:09 -0400
+Processing by Api::V1::StoriesController#index as HTML
+  [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.37ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/stories" for 127.0.0.1 at 2018-10-23 12:12:10 -0400
+Processing by Api::V1::StoriesController#index as */*
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers]   [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."story_id" = $1[0m  [["story_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/v1/stories_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.24ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.7ms)
+
+

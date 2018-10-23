@@ -9,6 +9,7 @@ function fetchPost(postId){
 }
 
 function postNewPost(body){
+  debugger
   return fetch('http://localhost:3000/api/v1/posts/', {
     method: "POST",
     headers: {
@@ -21,15 +22,33 @@ function postNewPost(body){
   })
 }
 
+function postNewStory(title){
+
+  return fetch('http://localhost:3000/api/v1/stories/', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      title: title
+    })
+  }).then(res => {
+    return res.json()})
+}
+
 function patchOldPost(postId, newPostId, nextPostIds){
-  if (!nextPostIds){
+  if (nextPostIds === "null"){
+
     body = {next_post_ids: `[${newPostId}]`}
   } else {
-    debugger
-    nextPostIds
+
+    var nextPostIds = nextPostIds.slice(1, -1).split(", ").map(num => parseInt(num))
+    nextPostIds.push(newPostId)
+
+    body = {next_post_ids: `[${nextPostIds}]`}
   }
 
-  body = {}
 
   return fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
     method: "PATCH",
@@ -38,8 +57,6 @@ function patchOldPost(postId, newPostId, nextPostIds){
       "Content-Type" : "application/json"
     },
 
-    body: JSON.stringify({
-      //START HERE TOMORROW
-    })
+    body: JSON.stringify(body)
   })
 }
