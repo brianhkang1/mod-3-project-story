@@ -74,29 +74,34 @@ function renderImageOptions(e){
 
 function renderDoodle(doodle){
   let doodleImg = document.createElement("img")
+  let doodleButton = document.createElement('button')
   doodleImg.src = doodle.img_url
   doodleImg.dataset.doodleId = doodle.id
-  doodleImg.classList.add("doodle-images")
-  document.querySelector(".doodle-container").appendChild(doodleImg)
+  doodleButton.classList.add("doodle-images");
+  doodleButton.appendChild(doodleImg);
+  document.querySelector(".doodle-container").appendChild(doodleButton)
   doodleImg.addEventListener("click", doodleHandler)
 
 }
 
 function doodleHandler(e){
   e.preventDefault();
+
+
   document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
-  debugger
+
 }
 
 function newStoryListener(e){
   e.preventDefault();
   e.stopPropagation();
-  debugger
+
   let title = event.currentTarget.children[1].value;
   let newPostContent = event.currentTarget.children[2].value;
   let doodle_id = document.querySelector("form").dataset.doodleId
 
   postNewStory(title, doodle_id).then(newStory => {
+
     let body = {
       content: newPostContent,
       story_id: newStory.id,
@@ -150,6 +155,7 @@ function renderZoomPost(post){
 
   //add image
   let zoom_image = document.createElement('img');
+  zoom_image.classList.add("post-image");
   zoom_image.src = post.doodle.img_url
   zoomStory.appendChild(zoom_image);
 
@@ -167,7 +173,9 @@ function createButtons(post){
 
   if (post.prev_post_id){
     let backButton = document.createElement('button');
+    backButton.classList.add('page-button')
     backButton.innerText = "previous page";
+    backButton.classList.add('back-button')
 
     backButton.dataset.storyId = post.story.id;
     backButton.dataset.previousPostId = post.prev_post_id;
@@ -179,6 +187,7 @@ function createButtons(post){
   if (post.next_post_ids === null) {
     let createNewPostButton = document.createElement('button');
     createNewPostButton.innerText = "Create New Post";
+    createNewPostButton.classList.add('new-post-button', 'page-button');
     createNewPostButton.dataset.storyId = post.story.id;
     createNewPostButton.dataset.previousPostId = post.id;
     createNewPostButton.dataset.nextPostIds = post.next_post_ids;
@@ -187,35 +196,43 @@ function createButtons(post){
 
   } else {
 
-    let next_post_array = post.next_post_ids.slice(1, -1).split(", ").map(num => parseInt(num));
+    let next_post_array = post.next_post_ids.slice(1, -1).split(",").map(num => parseInt(num));
 
     if (next_post_array.length < 3){
+
       let createNewPostButton = document.createElement('button');
       createNewPostButton.innerText = "Create New Post";
+      createNewPostButton.classList.add('new-post-button', 'page-button')
       createNewPostButton.dataset.storyId = post.story.id;
       createNewPostButton.dataset.previousPostId = post.id;
       createNewPostButton.dataset.nextPostIds = post.next_post_ids;
       storySelector.appendChild(createNewPostButton)
       createNewPostButton.addEventListener('click', newPost)
 
+
       next_post_array.forEach(function(postId) {
         fetchPost(postId)
         .then(function(post){
           let forwardButton = document.createElement('button');
+
+          storySelector.appendChild(forwardButton);
+          forwardButton.classList.add('page-button')
           forwardButton.innerText = post.content;
           forwardButton.dataset.storyId = post.story.id;
           forwardButton.dataset.previousPostId = post.prev_post_id;
           forwardButton.dataset.currentPostId = post.id;
-          storySelector.appendChild(forwardButton)
           forwardButton.addEventListener('click', nextPage)
         })
       })
 
     } else {
+
       next_post_array.forEach(function(postId) {
         fetchPost(postId)
         .then(function(post){
           let forwardButton = document.createElement('button');
+          forwardButton.classList.add('page-button');
+
           forwardButton.innerText = post.content;
           forwardButton.dataset.storyId = post.story.id;
           forwardButton.dataset.previousPostId = post.prev_post_id;
@@ -255,8 +272,16 @@ function newPost(){
   contentInput.placeholder = "Continue story"
   form.appendChild(contentInput);
 
+  let imgInput = document.createElement('button');
+  imgInput.innerText = "click to add image";
+  imgInput.classList.add('add-image-button', 'page-button')
+  imgInput.addEventListener('click', renderImageOptions)
+  form.appendChild(imgInput);
+
+
   let submit = document.createElement('input');
   submit.type = "submit";
+  submit.classList.add('page-button');
   submit.dataset.storyId = storyId;
   submit.dataset.previousPostId = previousPostId;
   submit.dataset.nextPostIds = nextPostIds;
@@ -267,13 +292,15 @@ function newPost(){
 }
 
 function submitNewPost(event){
-  event.preventDefault()
-  let input = event.currentTarget.children[0].value;
-  let storyId = +event.currentTarget.children[1].dataset.storyId;
-  let previousPostId = +event.currentTarget.children[1].dataset.previousPostId;
-  let nextPostIds = event.currentTarget.children[1].dataset.nextPostIds;
 
-  let body = {content: input, prev_post_id: previousPostId, story_id: storyId}
+  event.preventDefault()
+  let content = event.currentTarget.children[1].value;
+  let storyId = +event.currentTarget.children[3].dataset.storyId;
+  let previousPostId = +event.currentTarget.children[3].dataset.previousPostId;
+  let nextPostIds = event.currentTarget.children[3].dataset.nextPostIds;
+  let doodleId = +event.currentTarget.dataset.doodleId;
+
+  let body = {content: content, prev_post_id: previousPostId, story_id: storyId, doodle_id: doodleId}
 
   postNewPost(body)
   .then(newPost => {

@@ -43,7 +43,7 @@ function patchOldPost(postId, newPostId, nextPostIds){
     body = {next_post_ids: `[${newPostId}]`}
   } else {
 
-    var nextPostIds = nextPostIds.slice(1, -1).split(", ").map(num => parseInt(num))
+    var nextPostIds = nextPostIds.slice(1, -1).split(",").map(num => parseInt(num))
     nextPostIds.push(newPostId)
 
     body = {next_post_ids: `[${nextPostIds}]`}

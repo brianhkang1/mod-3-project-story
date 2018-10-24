@@ -1,6 +1,16 @@
 body, button, input {
   font-family: 'Gloria Hallelujah', cursive;
+
 }
+
+.page-button:hover{
+  font-size: 23px;
+}
+
+button:focus{
+  outline: none;
+}
+
 
 .center-screen{
  display: flex;
@@ -35,6 +45,10 @@ img {
   justify-content: center;
 }
 
+[class^=story-div] img:hover {
+  width: 70px;
+}
+
 .row .col-9{
   display: inline;
   font-size: 40px;
@@ -46,18 +60,34 @@ img {
   float: right;
   display: inline;
   right: 0;
-  height: 82px;
-  width: 82px;
+}
+
+#new-story-button img{
+  height: 62px;
+  width: 62px;
+}
+
+#new-story-button img:hover {
+  height: 55px;
+  width: 55px;
 }
 
 input[placeholder] {
   font-size: 20px;
   width: 600px;
+  border-radius: 10px;
+  border-style: solid;
+  margin: 5px;
+}
+
+input[placeholder]:focus {
+  outline: none;
 }
 
 button, input[type=submit]{
   border: none;
-  font-size: 30px;
+  font-size: 20px;
+
 }
 
 .story-image{
@@ -66,7 +96,7 @@ button, input[type=submit]{
 }
 
 .zoom-story{
-  font-size: 85px;
+  font-size: 50px;
   line-height: 110%;
 }
 
@@ -75,14 +105,55 @@ button, input[type=submit]{
 }
 
 .doodle-images{
-  width: 30px;
-  height:30px;
-  margin: 5px;
+  width: 5px;
+  height:5px;
+  /* margin: 5px; */
+}
+
+.doodle-images:hover{
+  /* border-style: dashed;
+  border-width: 1px; */
+  /* width: 10px; */
+  background-color: grey;
+  /* border-color: grey; */
+}
+
+button.doodle-images{
+  width: auto;
+  height: auto;
+  /* box-sizing: border-box; */
+  /* border-style: solid;
+  border-width: 1px; */
+}
+
+
+
+.doodle-images:focus{
+  border-width: 1px;
+  box-sizing: border-box;
+
+  border-style: solid;
+  border-color: grey;
 }
 
 .doodle-container{
   margin-bottom: 50px;
 }
+
+.post-image{
+  width: 140px;
+  height: 140px;
+}
+
+.add-image-button{
+  margin-top: 10px;
+}
+
+span{
+  display: inline;
+}
+
+
 
 /* .story-container {
   min-height: 720px;
