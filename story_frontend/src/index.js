@@ -56,30 +56,51 @@ function newStoryHandler(){
 function renderImageOptions(e){
   e.preventDefault();
 
-  let doodleDiv = document.createElement("div")
-  //fetch all the doodles
-  fetchAllDoodles().then(doodles => doodles.forEach(renderDoodle))
-  //go thru and render each doodle inside this div
+  //remove doodle-container if previously loaded
+  if (document.querySelector(".doodle-container")){
+    document.querySelector(".doodle-container").remove()
+  }
 
-  //attach to beginning of story-container
-  document.querySelector(".story-container").prepend(doodleDiv)
+  let doodleContainer = document.createElement("div")
+  doodleContainer.classList.add("doodle-container")
+  document.querySelector("form").prepend(doodleContainer)
+
+  //fetch all the doodles
+  fetchAllDoodles()
+    .then(doodles => {
+      doodles.forEach(renderDoodle)
+    })
 }
 
-function renderDoodle(){
+function renderDoodle(doodle){
+  let doodleImg = document.createElement("img")
+  doodleImg.src = doodle.img_url
+  doodleImg.dataset.doodleId = doodle.id
+  doodleImg.classList.add("doodle-images")
+  document.querySelector(".doodle-container").appendChild(doodleImg)
+  doodleImg.addEventListener("click", doodleHandler)
+
+}
+
+function doodleHandler(e){
+  e.preventDefault();
+  document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
   debugger
 }
 
 function newStoryListener(e){
   e.preventDefault();
   e.stopPropagation();
+  debugger
+  let title = event.currentTarget.children[1].value;
+  let newPostContent = event.currentTarget.children[2].value;
+  let doodle_id = document.querySelector("form").dataset.doodleId
 
-  let title = event.currentTarget.children[0].value;
-  let newPostContent = event.currentTarget.children[1].value;
-
-  postNewStory(title).then(newStory => {
+  postNewStory(title, doodle_id).then(newStory => {
     let body = {
       content: newPostContent,
-      story_id: newStory.id
+      story_id: newStory.id,
+      doodle_id: doodle_id
     }
     postNewPost(body)
       .then(newPost => renderZoomPost(newPost))

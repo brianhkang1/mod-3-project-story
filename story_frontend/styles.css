@@ -72,3 +72,13 @@ button, input[type=submit]{
 .story-container{
   margin-top: 25px;
 }
+
+.doodle-images{
+  width: 30px;
+  height:30px;
+  margin: 5px;
+}
+
+.doodle-container{
+  margin-bottom: 50px;
+}

@@ -21,7 +21,7 @@ function postNewPost(body){
   })
 }
 
-function postNewStory(title){
+function postNewStory(title, doodle_id){
 
   return fetch('http://localhost:3000/api/v1/stories/', {
     method: "POST",
@@ -30,7 +30,8 @@ function postNewStory(title){
       "Accept": "application/json"
     },
     body: JSON.stringify({
-      title: title
+      title: title,
+      doodle_id: doodle_id
     })
   }).then(res => {
     return res.json()})
