@@ -12,9 +12,10 @@ body, button, input {
 }
 
 .custom-header {
-  background-color: crimson;
-  border-bottom-style: solid;
-  border-width: 1px;
+  /* background-color: crimson; */
+  border-top-style: solid;
+  border-color: black;
+  border-width: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -82,3 +83,11 @@ button, input[type=submit]{
 .doodle-container{
   margin-bottom: 50px;
 }
+
+/* .story-container {
+  min-height: 720px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  border-radius: 10px;
+} */
