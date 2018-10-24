@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_134346) do
   create_table "posts", force: :cascade do |t|
     t.integer "story_id"
     t.string "content"
+    t.integer "doodle_id"
     t.integer "prev_post_id"
     t.string "next_post_ids"
     t.datetime "created_at", null: false
@@ -32,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_134346) do
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
-    t.string "img_url"
+    t.integer "doodle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

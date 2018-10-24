@@ -53,13 +53,25 @@ function newStoryHandler(){
   container.appendChild(form);
 }
 
-function renderImageOptions(){
-  event.stopPropagation();
+function renderImageOptions(e){
+  e.preventDefault();
+
+  let doodleDiv = document.createElement("div")
+  //fetch all the doodles
+  fetchAllDoodles().then(doodles => doodles.forEach(renderDoodle))
+  //go thru and render each doodle inside this div
+
+  //attach to beginning of story-container
+  document.querySelector(".story-container").prepend(doodleDiv)
+}
+
+function renderDoodle(){
   debugger
 }
 
-function newStoryListener(event){
-  event.preventDefault();
+function newStoryListener(e){
+  e.preventDefault();
+  e.stopPropagation();
 
   let title = event.currentTarget.children[0].value;
   let newPostContent = event.currentTarget.children[1].value;
@@ -83,7 +95,7 @@ function renderStory(story){
   // add image
   let img = document.createElement('img')
   img.classList.add("story-image");
-  img.src = story.img_url;
+  img.src = story.doodle.img_url;
   img.dataset.postId = story.posts.filter(post => {
     return post.prev_post_id === null})[0].id
   storyDiv.appendChild(img);
@@ -112,9 +124,13 @@ function firstPostListener(){
 function renderZoomPost(post){
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
-
   zoomStory.classList.add('center-screen', 'zoom-story');
   document.querySelector('.story-container').appendChild(zoomStory)
+
+  //add image
+  let zoom_image = document.createElement('img');
+  zoom_image.src = post.doodle.img_url
+  zoomStory.appendChild(zoom_image);
 
   //add first line
   let opening = document.createElement('p');

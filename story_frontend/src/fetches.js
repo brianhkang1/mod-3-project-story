@@ -48,14 +48,14 @@ function patchOldPost(postId, newPostId, nextPostIds){
     body = {next_post_ids: `[${nextPostIds}]`}
   }
 
-
   return fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
     method: "PATCH",
-
-    headers: {
-      "Content-Type" : "application/json"
-    },
-
+    headers: {"Content-Type" : "application/json"},
     body: JSON.stringify(body)
   })
+}
+
+function fetchAllDoodles(){
+  return fetch(`http://localhost:3000/api/v1/doodles`)
+    .then(res => res.json())
 }
