@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.integer :story_id
       t.string :content
+      t.integer :doodle_id
       t.integer :prev_post_id, :default => nil
       t.string :next_post_ids
       t.timestamps

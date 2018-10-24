@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function(){
-  renderNewStoryButton();
   renderStories();
 })
 
 function renderStories(){
+  let container = document.querySelector('.story-container')
+  container.innerHTML = "";
+  let button  = document.getElementById('new-story-button');
+  if (button !== null) {
+    document.querySelector('.custom-header').removeChild(document.getElementById('new-story-button'));}
+
+  renderNewStoryButton();
   fetchAllStories().then(data => {
     data.forEach(renderStory)
   })
@@ -30,15 +36,26 @@ function newStoryHandler(){
   titleInput.placeholder = "title"
   form.appendChild(titleInput);
 
+
   let firstPostInput = document.createElement('input');
   firstPostInput.placeholder = "begin your story"
   form.appendChild(firstPostInput);
+
+  let imgInput = document.createElement('button');
+  imgInput.innerText = "click to add image";
+  imgInput.addEventListener('click', renderImageOptions)
+  form.appendChild(imgInput);
 
   let submit = document.createElement('input');
   submit.type = "submit";
   form.appendChild(submit);
   form.addEventListener('submit', newStoryListener)
   container.appendChild(form);
+}
+
+function renderImageOptions(){
+  event.stopPropagation();
+  debugger
 }
 
 function newStoryListener(event){

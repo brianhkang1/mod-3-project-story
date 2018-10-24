@@ -1,3 +1,4 @@
 class Story < ApplicationRecord
-  has_many :posts 
+  has_many :posts
+  belongs_to :doodle
 end

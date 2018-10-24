@@ -26,7 +26,7 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :prev_post_id, :next_post_ids, :story_id)
+    params.require(:post).permit(:content, :prev_post_id, :next_post_ids, :story_id, :doodle_id)
   end
 
   def find_post

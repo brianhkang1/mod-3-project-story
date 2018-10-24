@@ -5,12 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Story.create(title: "Goldilocks", img_url: "./doodles/girl.svg")
-Story.create(title: "Peter Pan", img_url: "./doodles/boy.svg")
-
-Post.create(story_id: 1, content: "There once was a girl", next_post_ids: "[2, 3]")
-Post.create(story_id: 1, content: "She went to the woods", prev_post_id: 1)
-Post.create(story_id: 1, content: "She hates bears", prev_post_id: 1)
-
-Post.create(story_id:2, content: "There was once a flying boy")
+Dir.foreach("story_frontend/doodles") do |doodle|
+  next if (doodle == '.' || doodle == '..')
+  Doodle.create(img_url: "story_frontend/doodles"+"#{doodle}")
+end
+#
+# Story.create(title: "Goldilocks")
+# Story.create(title: "Peter Pan")
+#
+# Post.create(story_id: 1, content: "There once was a girl", next_post_ids: "[2, 3]")
+# Post.create(story_id: 1, content: "She went to the woods", prev_post_id: 1)
+# Post.create(story_id: 1, content: "She hates bears", prev_post_id: 1)
+#
+# Post.create(story_id:2, content: "There was once a flying boy")

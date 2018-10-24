@@ -18,7 +18,7 @@ class Api::V1::StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:title, :img_url)
+    params.require(:story).permit(:title, :doodle_id)
   end
 
   def find_story
