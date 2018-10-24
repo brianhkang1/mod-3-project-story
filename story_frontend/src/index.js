@@ -25,12 +25,13 @@ function newStoryHandler(){
   container.innerHTML = "";
 
   let form = document.createElement('form');
+  form.classList.add("center-screen")
   let titleInput = document.createElement('input');
   titleInput.placeholder = "title"
   form.appendChild(titleInput);
 
   let firstPostInput = document.createElement('input');
-  firstPostInput.placeholder = "first line of your story"
+  firstPostInput.placeholder = "begin your story"
   form.appendChild(firstPostInput);
 
   let submit = document.createElement('input');
@@ -63,18 +64,17 @@ function renderStory(story){
   document.querySelector('.story-container').appendChild(storyDiv)
 
   // add image
-  let img = document.createElement('img');
+  let img = document.createElement('img')
+  img.classList.add("story-image");
   img.src = story.img_url;
-
-
   img.dataset.postId = story.posts.filter(post => {
     return post.prev_post_id === null})[0].id
   storyDiv.appendChild(img);
 
   //add story title
-  // let title = document.createElement('h2');
-  // title.innerText = story.title;
-  // storyDiv.appendChild(title);
+  let title = document.createElement('h4');
+  title.innerText = story.title;
+  storyDiv.appendChild(title);
 
   //add story content
   // let opening = document.createElement('p');

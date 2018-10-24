@@ -1,8 +1,8 @@
-body, button {
+body, button, input {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-.center-screen,  div.center-screen.zoom-story{
+.center-screen{
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -41,13 +41,34 @@ img {
 
 #new-story-button {
   padding: none;
-  position: fixed;
+  position: flex;
+  float: right;
   display: inline;
   right: 0;
   height: 82px;
   width: 82px;
 }
 
-/* .col-3 {
-  padding: none;
-} */
+input[placeholder] {
+  font-size: 20px;
+  width: 600px;
+}
+
+button, input[type=submit]{
+  border: none;
+  font-size: 30px;
+}
+
+.story-image{
+  height: 100px;
+  width: 100px;
+}
+
+.zoom-story{
+  font-size: 85px;
+  line-height: 110%;
+}
+
+.story-container{
+  margin-top: 25px;
+}
