@@ -11,6 +11,12 @@ button:focus{
   outline: none;
 }
 
+/* #test{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  overflow: auto;
+} */
 
 .center-screen{
  display: flex;
@@ -59,7 +65,9 @@ img {
   position: flex;
   float: right;
   display: inline;
-  right: 0;
+  /* position: relative;
+  /* top: 25%;
+   right: 50%; */
 }
 
 #new-story-button img{
@@ -102,6 +110,7 @@ button, input[type=submit]{
 
 .story-container{
   margin-top: 25px;
+  /* justify-content: center; */
 }
 
 .doodle-images{
@@ -153,8 +162,30 @@ span{
   display: inline;
 }
 
+/*  this 'theEnd' thing is only rendering in a hacky way,
+because of the fetches in playStory*/
+#the-end{
+  position: fixed;
+  top: 80%;
+  left: 45%;
+}
 
+#play-story{
+  position: fixed;
+  left: 45%;
+  top: 45%;
+}
 
+/*  these text items are also rendering in a hacky 'center', inconsistent*/
+.final-story{
+  position: relative;
+  left: 37%;
+}
+
+.final-image{
+  position: relative;
+  left: 45%;
+}
 /* .story-container {
   min-height: 720px;
   border-style: solid;

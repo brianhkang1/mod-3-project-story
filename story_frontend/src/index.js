@@ -194,6 +194,13 @@ function createButtons(post){
     storySelector.appendChild(createNewPostButton)
     createNewPostButton.addEventListener('click', newPost)
 
+    let theEndButton = document.createElement('button');
+    theEndButton.innerText = "the end.";
+    theEndButton.classList.add('page-button');
+    theEndButton.dataset.finalPostId = post.id;
+    theEndButton.addEventListener('click', theEnd)
+    storySelector.appendChild(theEndButton)
+
   } else {
 
     let next_post_array = post.next_post_ids.slice(1, -1).split(",").map(num => parseInt(num));
@@ -307,5 +314,59 @@ function submitNewPost(event){
     renderZoomPost(newPost);
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
+}
+
+let storyIdOrder;
+
+function theEnd(){
+  document.querySelector('.story-container').innerHTML = "";
+
+  let playStoryButton = document.createElement('button');
+  playStoryButton.innerText = "play story";
+  playStoryButton.id = "play-story"
+  playStoryButton.addEventListener('click', playStory)
+  document.querySelector('.story-container').appendChild(playStoryButton);
+
+
+  let lastPostId = parseInt(event.currentTarget.dataset.finalPostId);
+  let penultimatePostId = parseInt(event.currentTarget.dataset.penultimatePostId);
+
+  storyIdOrder = [];
+  return recursivePostFetch(lastPostId)
+
+}
+
+
+function recursivePostFetch(lastPostId){
+  fetchPost(lastPostId).then(post => {
+    storyIdOrder.unshift(post.id);
+    if (post.prev_post_id !== null){
+      recursivePostFetch(post.prev_post_id)
+    }
+  })
+  return storyIdOrder
+}
+
+function playStory(){
+// still need to encorporate setInterval....ideally, but idk cuz of fetches
+  document.querySelector('.story-container').innerHTML = "";
+
+  for (let i = 0; i < storyIdOrder.length; i++){
+    fetchPost(storyIdOrder[i]).then(post => {
+      let content = document.createElement('p')
+      content.innerText = post.content;
+      content.classList.add('final-story')
+      document.querySelector('.story-container').appendChild(content);
+
+      let image = document.createElement('img');
+      image.src = post.doodle.img_url;
+      image.classList.add('final-image')
+      document.querySelector('.story-container').appendChild(image);
+    })
+  }
+  let theEnd = document.createElement('p');
+  theEnd.id = "the-end"
+  theEnd.innerText = "the end."
+  document.querySelector('.story-container').appendChild(theEnd);
 
 }
