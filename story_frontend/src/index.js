@@ -53,11 +53,11 @@ function newStoryHandler(){
   form.appendChild(firstPostInput);
 
   //add story + first post's doodle field
-  let imgInput = document.createElement('button');
-  imgInput.innerText = "click to add image";
-  imgInput.classList.add("page-button")
-  imgInput.addEventListener('click', renderImageOptions)
-  form.appendChild(imgInput);
+  // let imgInput = document.createElement('button');
+  // imgInput.innerText = "click to add image";
+  // imgInput.classList.add("page-button")
+  // imgInput.addEventListener('click', renderImageOptions)
+  // form.appendChild(imgInput);
 
   //add submit field
   let submit = document.createElement('input');
@@ -69,8 +69,8 @@ function newStoryHandler(){
 }
 
 function renderImageOptions(e){
-  e.preventDefault()
-  e.stopPropagation()
+  // e.preventDefault()
+  // e.stopPropagation()
 
   //remove doodle-container if previously rendered
   if (document.querySelector(".doodle-container")){
@@ -118,15 +118,20 @@ function newStoryListener(e){
   let doodle_id = document.querySelector("form").dataset.doodleId
 
   //after we POST to story API, we then POST to post API. After that we render the new post
-  postNewStory(title, doodle_id).then(newStory => {
-    let body = {
-      content: newPostContent,
-      story_id: newStory.id,
-      doodle_id: doodle_id
-    }
-    postNewPost(body)
+  if (title === "" || newPostContent === "" || doodle_id === undefined){
+    alert("please enter a title, a post, and select an image")
+  }else {
+    postNewStory(title, doodle_id).then(newStory => {
+      let body = {
+        content: newPostContent,
+        story_id: newStory.id,
+        doodle_id: doodle_id
+      }
+      postNewPost(body)
       .then(newPost => renderZoomPost(newPost))
-  })
+    })
+
+  }
 }
 
 function renderStory(story){
@@ -183,7 +188,7 @@ function renderZoomPost(post){
 
   //add first line
   let opening = document.createElement('p');
-  opening.innerText = post.content
+  opening.innerText = post.content+"..."
   zoomStory.appendChild(opening);
 
   //create previous, new post, and forward buttons
@@ -304,11 +309,11 @@ function newPost(){
   contentInput.placeholder = "Continue story"
   form.appendChild(contentInput);
 
-  let imgInput = document.createElement('button');
-  imgInput.innerText = "click to add image";
-  imgInput.classList.add('add-image-button', 'page-button')
-  imgInput.addEventListener('click', renderImageOptions)
-  form.appendChild(imgInput);
+  // let imgInput = document.createElement('button');
+  // imgInput.innerText = "click to add image";
+  // imgInput.classList.add('add-image-button', 'page-button')
+  // imgInput.addEventListener('click', renderImageOptions)
+  // form.appendChild(imgInput);
 
   let submit = document.createElement('input');
   submit.type = "submit";
@@ -320,6 +325,7 @@ function newPost(){
   form.addEventListener('submit', submitNewPost)
 
   container.appendChild(form);
+  renderImageOptions();
 }
 
 function submitNewPost(e){
@@ -328,18 +334,22 @@ function submitNewPost(e){
   e.stopPropagation()
 
   let content = event.currentTarget.children[1].value;
-  let storyId = +event.currentTarget.children[3].dataset.storyId;
-  let previousPostId = +event.currentTarget.children[3].dataset.previousPostId;
-  let nextPostIds = event.currentTarget.children[3].dataset.nextPostIds;
+  let storyId = +event.currentTarget.children[2].dataset.storyId;
+  let previousPostId = +event.currentTarget.children[2].dataset.previousPostId;
+  let nextPostIds = event.currentTarget.children[2].dataset.nextPostIds;
   let doodleId = +event.currentTarget.dataset.doodleId;
 
   let body = {content: content, prev_post_id: previousPostId, story_id: storyId, doodle_id: doodleId}
-
-  postNewPost(body)
-  .then(newPost => {
-    renderZoomPost(newPost)
-    patchOldPost(previousPostId, newPost.id, nextPostIds)
-  })
+debugger
+  if (content === "" || !doodleId){
+    alert("please enter text to continue the story, and select an image")
+  }else {
+    postNewPost(body)
+    .then(newPost => {
+      renderZoomPost(newPost)
+      patchOldPost(previousPostId, newPost.id, nextPostIds)
+    })
+  }
 }
 
 // let storyIdOrder;

@@ -19,19 +19,28 @@ function fetchPlayStory(i){
     newDiv.appendChild(image)
     document.querySelector("#playStoryDiv").appendChild(newDiv);
 
-    let content = document.createElement('p')
-    content.innerText = post.content;
-    content.classList.add('final')
-    newDiv.appendChild(content)
-    document.querySelector("#playStoryDiv").appendChild(newDiv);
-
     if (post.next_post_ids === null){
+      let content = document.createElement('p')
+      content.innerText = post.content+".";
+      content.classList.add('final')
+      newDiv.appendChild(content)
+      document.querySelector("#playStoryDiv").appendChild(newDiv);
+
       let theEnd = document.createElement('p');
       theEnd.classList.add("final")
       theEnd.id = "the-end"
-      theEnd.innerText = "the end."
+      theEnd.innerText = "\n\nthe end."
       newDiv.appendChild(theEnd)
       document.querySelector("#playStoryDiv").appendChild(newDiv)
+
+    }
+    else {
+      let content = document.createElement('p')
+      content.innerText = post.content+"...";
+      content.classList.add('final')
+      newDiv.appendChild(content)
+      document.querySelector("#playStoryDiv").appendChild(newDiv);
+
     }
     }
   )
