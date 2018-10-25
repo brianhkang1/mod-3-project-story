@@ -3,12 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 function renderStories(){
-  let container = document.querySelector('.story-container')
-  container.innerHTML = "";
+  //clear the screen, render the new-story-button, fetch all stories, and render each story
+  document.querySelector('.story-container').innerHTML = ""
   let button  = document.getElementById('new-story-button');
-  if (button !== null) {
-    document.querySelector('.custom-header').removeChild(document.getElementById('new-story-button'));}
 
+  if (button !== null) {
+    document.querySelector('.custom-header').removeChild(document.getElementById('new-story-button'))
+  }
   renderNewStoryButton();
   fetchAllStories().then(data => {
     data.forEach(renderStory)
@@ -16,38 +17,52 @@ function renderStories(){
 }
 
 function renderNewStoryButton(){
+  //first create div
   let newDiv = document.createElement("div")
-  newDiv.id = "new-story-button";
-  // newDiv.classList.add("col-3")
+  newDiv.id = "new-story-button"
+
+  //add button to create new story inside div
   let newStoryButton = document.createElement('img');
   newStoryButton.src = "./doodles/writing.svg";
   newStoryButton.addEventListener('click', newStoryHandler)
   newDiv.appendChild(newStoryButton);
   document.querySelector(".custom-header").appendChild(newDiv)
+
+  let spanElement = document.createElement("span")
+  spanElement.innerText = "Begin New Story"
+  newDiv.appendChild(spanElement)
+
 }
 
 function newStoryHandler(){
   let container = document.querySelector('.story-container')
   container.innerHTML = "";
 
+  //create general form
   let form = document.createElement('form');
   form.classList.add("center-screen")
+
+  //add story title input field
   let titleInput = document.createElement('input');
   titleInput.placeholder = "title"
   form.appendChild(titleInput);
 
-
+  //add story's first post input field
   let firstPostInput = document.createElement('input');
   firstPostInput.placeholder = "begin your story"
   form.appendChild(firstPostInput);
 
+  //add story + first post's doodle field
   let imgInput = document.createElement('button');
   imgInput.innerText = "click to add image";
+  imgInput.classList.add("page-button")
   imgInput.addEventListener('click', renderImageOptions)
   form.appendChild(imgInput);
 
+  //add submit field
   let submit = document.createElement('input');
   submit.type = "submit";
+  submit.classList.add("page-button")
   form.appendChild(submit);
   form.addEventListener('submit', newStoryListener)
   container.appendChild(form);
@@ -56,16 +71,17 @@ function newStoryHandler(){
 function renderImageOptions(e){
   e.preventDefault();
 
-  //remove doodle-container if previously loaded
+  //remove doodle-container if previously rendered
   if (document.querySelector(".doodle-container")){
     document.querySelector(".doodle-container").remove()
   }
 
+  //create doodle container and PREPEND it to form
   let doodleContainer = document.createElement("div")
   doodleContainer.classList.add("doodle-container")
   document.querySelector("form").prepend(doodleContainer)
 
-  //fetch all the doodles
+  //fetch and show all doodles
   fetchAllDoodles()
     .then(doodles => {
       doodles.forEach(renderDoodle)
@@ -75,33 +91,32 @@ function renderImageOptions(e){
 function renderDoodle(doodle){
   let doodleImg = document.createElement("img")
   let doodleButton = document.createElement('button')
+
   doodleImg.src = doodle.img_url
   doodleImg.dataset.doodleId = doodle.id
   doodleButton.classList.add("doodle-images");
   doodleButton.appendChild(doodleImg);
   document.querySelector(".doodle-container").appendChild(doodleButton)
   doodleImg.addEventListener("click", doodleHandler)
-
 }
 
 function doodleHandler(e){
-  e.preventDefault();
-
-
+  //when we click on a doodle, get its doodle id and set it as part of the dataset of the general form
   document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
-
+  e.preventDefault();
 }
 
 function newStoryListener(e){
   e.preventDefault();
   e.stopPropagation();
 
+  //get story title, doodleId and story's first post to use as body when we POST to story and post
   let title = event.currentTarget.children[1].value;
   let newPostContent = event.currentTarget.children[2].value;
   let doodle_id = document.querySelector("form").dataset.doodleId
 
+  //after we POST to story API, we then POST to post API. After that we render the new post
   postNewStory(title, doodle_id).then(newStory => {
-
     let body = {
       content: newPostContent,
       story_id: newStory.id,
@@ -131,15 +146,10 @@ function renderStory(story){
   title.innerText = story.title;
   storyDiv.appendChild(title);
 
-  //add story content
-  // let opening = document.createElement('p');
-  // opening.innerText = `${story.posts[0].content}...`;
-  // storyDiv.appendChild(opening);
   document.querySelector(`.story-div-${story.id}`).addEventListener('click', firstPostListener)
 }
 
 function firstPostListener(){
-
   let postId = event.currentTarget.querySelector("img").dataset.postId
   fetchPost(postId)
   .then(post => {
@@ -148,9 +158,10 @@ function firstPostListener(){
 }
 
 function renderZoomPost(post){
+  //clear screen and create div element
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
-  zoomStory.classList.add('center-screen', 'zoom-story');
+  zoomStory.classList.add('center-screen', 'zoom-story', "w3-animate-right");
   document.querySelector('.story-container').appendChild(zoomStory)
 
   //add image
@@ -161,16 +172,17 @@ function renderZoomPost(post){
 
   //add first line
   let opening = document.createElement('p');
-  opening.innerText = post.content + "..."
+  opening.innerText = post.content
   zoomStory.appendChild(opening);
 
+  //create previous, new post, and forward buttons
   createButtons(post)
 }
 
 function createButtons(post){
-
   let storySelector = document.querySelector(".zoom-story");
 
+  //if this post has a previous post id, then show a PREVIOUS BUTTON
   if (post.prev_post_id){
     let backButton = document.createElement('button');
     backButton.classList.add('page-button')
@@ -184,9 +196,10 @@ function createButtons(post){
     backButton.addEventListener('click', previousPage)
   };
 
+  //if this post doesn't have next-post-id's, then create a new post buton
   if (post.next_post_ids === null) {
     let createNewPostButton = document.createElement('button');
-    createNewPostButton.innerText = "Create New Post";
+    createNewPostButton.innerText = "write what happens next";
     createNewPostButton.classList.add('new-post-button', 'page-button');
     createNewPostButton.dataset.storyId = post.story.id;
     createNewPostButton.dataset.previousPostId = post.id;
@@ -202,13 +215,13 @@ function createButtons(post){
     storySelector.appendChild(theEndButton)
 
   } else {
-
+    //get the next-post-id's and put them in an array
     let next_post_array = post.next_post_ids.slice(1, -1).split(",").map(num => parseInt(num));
 
+    //if there are less than three posts branching off have both new post button and each post branching off:
     if (next_post_array.length < 3){
-
       let createNewPostButton = document.createElement('button');
-      createNewPostButton.innerText = "Create New Post";
+      createNewPostButton.innerText = "write what happens next";
       createNewPostButton.classList.add('new-post-button', 'page-button')
       createNewPostButton.dataset.storyId = post.story.id;
       createNewPostButton.dataset.previousPostId = post.id;
@@ -216,7 +229,7 @@ function createButtons(post){
       storySelector.appendChild(createNewPostButton)
       createNewPostButton.addEventListener('click', newPost)
 
-
+      //for each post branching off, create a button
       next_post_array.forEach(function(postId) {
         fetchPost(postId)
         .then(function(post){
@@ -233,7 +246,7 @@ function createButtons(post){
       })
 
     } else {
-
+      //if there are more than three posts branching off, then only show the next posts, DON'T have new post button
       next_post_array.forEach(function(postId) {
         fetchPost(postId)
         .then(function(post){
@@ -250,22 +263,23 @@ function createButtons(post){
       })
     }
   }
-  }
+}
 
+//when the next post is clicked, then fetch that post and render it
 function nextPage(){
   fetchPost(event.currentTarget.dataset.currentPostId)
     .then(post => renderZoomPost(post))
 }
 
-
+//when a previous post is clicked, then fetch that post and render it
 function previousPage(){
   let postId = parseInt(event.currentTarget.dataset.previousPostId);
-
   fetchPost(postId).then(post => renderZoomPost(post))
 }
 
 
 function newPost(){
+  //clear screen, show form to create a new post
   let storyId = event.currentTarget.dataset.storyId;
   let previousPostId  = event.currentTarget.dataset.previousPostId;
   let nextPostIds = event.currentTarget.dataset.nextPostIds;
@@ -285,7 +299,6 @@ function newPost(){
   imgInput.addEventListener('click', renderImageOptions)
   form.appendChild(imgInput);
 
-
   let submit = document.createElement('input');
   submit.type = "submit";
   submit.classList.add('page-button');
@@ -299,7 +312,7 @@ function newPost(){
 }
 
 function submitNewPost(event){
-
+  //when we click on submit new post, get necessary info, POST new post, and PATCH old post (it's nextPostId)
   event.preventDefault()
   let content = event.currentTarget.children[1].value;
   let storyId = +event.currentTarget.children[3].dataset.storyId;
@@ -311,9 +324,10 @@ function submitNewPost(event){
 
   postNewPost(body)
   .then(newPost => {
-    renderZoomPost(newPost);
+    renderZoomPost(newPost)
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
+<<<<<<< HEAD
 }
 
 let storyIdOrder;
@@ -369,4 +383,6 @@ function playStory(){
   theEnd.innerText = "the end."
   document.querySelector('.story-container').appendChild(theEnd);
 
+=======
+>>>>>>> 41e510e875f8cd938732f4e0474a48a3be08c126
 }
