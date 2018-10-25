@@ -22,10 +22,9 @@ button:focus{
 }
 
 .custom-header {
-  /* background-color: crimson; */
   border-top-style: solid;
   border-color: black;
-  border-width: 5px;
+  border-width: 4px;
   padding-left: 15px;
   padding-right: 15px;
 }
