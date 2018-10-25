@@ -69,7 +69,8 @@ function newStoryHandler(){
 }
 
 function renderImageOptions(e){
-  e.preventDefault();
+  e.preventDefault()
+  e.stopPropagation()
 
   //remove doodle-container if previously rendered
   if (document.querySelector(".doodle-container")){
@@ -103,7 +104,8 @@ function renderDoodle(doodle){
 function doodleHandler(e){
   //when we click on a doodle, get its doodle id and set it as part of the dataset of the general form
   document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
-  e.preventDefault();
+  e.preventDefault()
+  e.stopPropagation()
 }
 
 function newStoryListener(e){
@@ -130,11 +132,20 @@ function newStoryListener(e){
 function renderStory(story){
   //add story div
   let storyDiv = document.createElement('div');
+  let img = document.createElement('img')
   storyDiv.classList.add(`story-div-${story.id}`);
   document.querySelector('.story-container').appendChild(storyDiv)
+  storyDiv.addEventListener("mouseover", function(){
+    img.style.width = "75px"
+    img.style.height = "75px"
+  })
+  storyDiv.addEventListener("mouseout", function(){
+    img.style.width = "90px"
+    img.style.height = "90px"
+  })
+
 
   // add image
-  let img = document.createElement('img')
   img.classList.add("story-image");
   img.src = story.doodle.img_url;
   img.dataset.postId = story.posts.filter(post => {
@@ -161,7 +172,7 @@ function renderZoomPost(post){
   //clear screen and create div element
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
-  zoomStory.classList.add('center-screen', 'zoom-story', "w3-animate-right");
+  zoomStory.classList.add('center-screen', 'zoom-story');
   document.querySelector('.story-container').appendChild(zoomStory)
 
   //add image
@@ -311,9 +322,11 @@ function newPost(){
   container.appendChild(form);
 }
 
-function submitNewPost(event){
+function submitNewPost(e){
   //when we click on submit new post, get necessary info, POST new post, and PATCH old post (it's nextPostId)
-  event.preventDefault()
+  e.preventDefault()
+  e.stopPropagation()
+
   let content = event.currentTarget.children[1].value;
   let storyId = +event.currentTarget.children[3].dataset.storyId;
   let previousPostId = +event.currentTarget.children[3].dataset.previousPostId;
@@ -327,10 +340,9 @@ function submitNewPost(event){
     renderZoomPost(newPost)
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
-<<<<<<< HEAD
 }
 
-let storyIdOrder;
+// let storyIdOrder;
 
 function theEnd(){
   document.querySelector('.story-container').innerHTML = "";
@@ -341,15 +353,13 @@ function theEnd(){
   playStoryButton.addEventListener('click', playStory)
   document.querySelector('.story-container').appendChild(playStoryButton);
 
-
   let lastPostId = parseInt(event.currentTarget.dataset.finalPostId);
-  let penultimatePostId = parseInt(event.currentTarget.dataset.penultimatePostId);
+  // let penultimatePostId = parseInt(event.currentTarget.dataset.penultimatePostId);
 
   storyIdOrder = [];
   return recursivePostFetch(lastPostId)
 
 }
-
 
 function recursivePostFetch(lastPostId){
   fetchPost(lastPostId).then(post => {
@@ -358,31 +368,43 @@ function recursivePostFetch(lastPostId){
       recursivePostFetch(post.prev_post_id)
     }
   })
-  return storyIdOrder
 }
 
 function playStory(){
 // still need to encorporate setInterval....ideally, but idk cuz of fetches
   document.querySelector('.story-container').innerHTML = "";
-
-  for (let i = 0; i < storyIdOrder.length; i++){
-    fetchPost(storyIdOrder[i]).then(post => {
-      let content = document.createElement('p')
-      content.innerText = post.content;
-      content.classList.add('final-story')
-      document.querySelector('.story-container').appendChild(content);
-
-      let image = document.createElement('img');
-      image.src = post.doodle.img_url;
-      image.classList.add('final-image')
-      document.querySelector('.story-container').appendChild(image);
-    })
+  let newDiv = document.createElement("div")
+  newDiv.id = "playStoryDiv"
+  newDiv.classList.add("horizontal-center")
+  document.querySelector('.story-container').appendChild(newDiv)
+  // setInterval(fetchPlayStory, 2000)
+  for (const i in storyIdOrder){
+    setTimeout(function(){
+      fetchPlayStory(storyIdOrder[i])
+    }, i * 2000)
   }
-  let theEnd = document.createElement('p');
-  theEnd.id = "the-end"
-  theEnd.innerText = "the end."
-  document.querySelector('.story-container').appendChild(theEnd);
 
-=======
->>>>>>> 41e510e875f8cd938732f4e0474a48a3be08c126
-}
+    // fetchPost(storyIdOrder[i])
+    //   .then(post => {
+    //     postSlideShow(post){
+    //     let image = document.createElement('img');
+    //     image.src = post.doodle.img_url;
+    //     image.classList.add('final')
+    //     newDiv.appendChild(image);
+    //
+    //     let content = document.createElement('p')
+    //     content.innerText = post.content;
+    //     content.classList.add('final')
+    //     newDiv.appendChild(content);
+    //
+    //     if (post.next_post_ids === null){
+    //       let theEnd = document.createElement('p');
+    //       theEnd.classList.add("final")
+    //       theEnd.id = "the-end"
+    //       theEnd.innerText = "the end."
+    //       newDiv.appendChild(theEnd)
+    //     }
+    //   }
+    // )
+    // }
+  }

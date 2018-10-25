@@ -8,6 +8,36 @@ function fetchPost(postId){
   .then(res => res.json())
 }
 
+function fetchPlayStory(i){
+  fetchPost(i)
+  .then(post => {
+    let newDiv = document.createElement('div')
+    newDiv.classList.add("slideshowPost")
+    let image = document.createElement('img');
+    image.src = post.doodle.img_url;
+    image.classList.add('final')
+    newDiv.appendChild(image)
+    document.querySelector("#playStoryDiv").appendChild(newDiv);
+
+    let content = document.createElement('p')
+    content.innerText = post.content;
+    content.classList.add('final')
+    newDiv.appendChild(content)
+    document.querySelector("#playStoryDiv").appendChild(newDiv);
+
+    if (post.next_post_ids === null){
+      let theEnd = document.createElement('p');
+      theEnd.classList.add("final")
+      theEnd.id = "the-end"
+      theEnd.innerText = "the end."
+      newDiv.appendChild(theEnd)
+      document.querySelector("#playStoryDiv").appendChild(newDiv)
+    }
+    }
+  )
+}
+
+
 function postNewPost(body){
   return fetch('http://localhost:3000/api/v1/posts/', {
     method: "POST",

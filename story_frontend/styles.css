@@ -8,7 +8,7 @@ body{
   min-height: 720px;
 }
 
-.page-button:hover{
+.page-button:hover, #play-story:hover{
   font-size: 23px;
   cursor: pointer;
 }
@@ -33,9 +33,15 @@ button:focus{
  min-height: 100vh;
 }
 
+.horizontal-center{
+  position: absolute;
+  left: 45%;
+}
+
 .custom-header {
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 50px;
 }
 
 img {
@@ -51,10 +57,9 @@ img {
   justify-content: center;
 }
 
-[class^=story-div] img:hover {
-  height: 70px;
-  width: 70px;
-  cursor: pointer;
+[class^=story-div] img {
+  height: 90px;
+  width: 90px;
 }
 
 .row .col-9{
@@ -71,21 +76,15 @@ div.col-9:hover{
   position: flex;
   float: right;
   display: inline;
-<<<<<<< HEAD
-  /* position: relative;
-  /* top: 25%;
-   right: 50%; */
-=======
   right: 0;
   border-left-style: solid;
   border-bottom-style: solid;
   border-radius: 10px;
->>>>>>> 41e510e875f8cd938732f4e0474a48a3be08c126
 }
 
 #new-story-button img{
-  height: 62px;
-  width: 62px;
+  height: 60px;
+  width: 60px;
 }
 
 #new-story-button img:hover {
@@ -127,10 +126,27 @@ button, input[type=submit]{
 
 .center-screen{
   animation-duration: 1s;
-  animation-name: slideFromTop;
+  animation-name: slideFromBottom;
 }
 
-@keyframes slideFromTop {
+@keyframes slideFromBottom {
+  from {
+    margin-top: 100%;
+    height: 300%;
+  }
+
+  to {
+    margin-top: 0%;
+    height: 100%;
+  }
+}
+
+.final{
+  animation-duration: 1s;
+  animation-name: slideFromBottomFinal;
+}
+
+@keyframes slideFromBottomFinal {
   from {
     margin-top: 100%;
     height: 300%;
@@ -143,12 +159,8 @@ button, input[type=submit]{
 }
 
 .story-container{
-<<<<<<< HEAD
   margin-top: 25px;
-  /* justify-content: center; */
-=======
   margin: 25px;
->>>>>>> 41e510e875f8cd938732f4e0474a48a3be08c126
 }
 
 .doodle-images{
@@ -162,6 +174,7 @@ button, input[type=submit]{
   border-width: 1px; */
   /* width: 10px; */
   background-color: lightgrey;
+  border-radius: 10px;
   cursor: pointer;
   /* border-color: grey; */
 }
@@ -169,15 +182,15 @@ button, input[type=submit]{
 button.doodle-images{
   width: auto;
   height: auto;
+  margin: 5px;
   /* box-sizing: border-box; */
   /* border-style: solid;
   border-width: 1px; */
 }
 
-
-
 .doodle-images:focus{
   background-color: lightgrey;
+  border-radius: 10px;
 }
 
 .doodle-container{
@@ -197,14 +210,13 @@ span{
   display: inline;
 }
 
-<<<<<<< HEAD
 /*  this 'theEnd' thing is only rendering in a hacky way,
 because of the fetches in playStory*/
-#the-end{
+/* #the-end{
   position: fixed;
   top: 80%;
   left: 45%;
-}
+} */
 
 #play-story{
   position: fixed;
@@ -213,7 +225,7 @@ because of the fetches in playStory*/
 }
 
 /*  these text items are also rendering in a hacky 'center', inconsistent*/
-.final-story{
+/* .final-story{
   position: relative;
   left: 37%;
 }
@@ -221,13 +233,12 @@ because of the fetches in playStory*/
 .final-image{
   position: relative;
   left: 45%;
-}
-/* .story-container {
+} */
+
+.story-container {
   min-height: 720px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: grey;
-=======
+}
+
 #header-title{
   position: absolute;
   top: 7%;
@@ -239,6 +250,9 @@ because of the fetches in playStory*/
 /* #header-img{
   border-right-style: solid;
   border-bottom-style: solid;
->>>>>>> 41e510e875f8cd938732f4e0474a48a3be08c126
   border-radius: 10px;
 } */
+
+.slideshowPost{
+  text-align: center;
+}
