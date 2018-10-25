@@ -16,13 +16,10 @@ function postNewPost(body){
       "Accept": "application/json"
     },
     body: JSON.stringify(body)
-  }).then(res => {
-    return res.json()
-  })
+  }).then(res => res.json())
 }
 
 function postNewStory(title, doodle_id){
-
   return fetch('http://localhost:3000/api/v1/stories/', {
     method: "POST",
     headers: {
@@ -39,10 +36,8 @@ function postNewStory(title, doodle_id){
 
 function patchOldPost(postId, newPostId, nextPostIds){
   if (nextPostIds === "null"){
-
     body = {next_post_ids: `[${newPostId}]`}
   } else {
-
     var nextPostIds = nextPostIds.slice(1, -1).split(",").map(num => parseInt(num))
     nextPostIds.push(newPostId)
 

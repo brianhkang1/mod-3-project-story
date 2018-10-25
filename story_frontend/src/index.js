@@ -27,6 +27,11 @@ function renderNewStoryButton(){
   newStoryButton.addEventListener('click', newStoryHandler)
   newDiv.appendChild(newStoryButton);
   document.querySelector(".custom-header").appendChild(newDiv)
+
+  let spanElement = document.createElement("span")
+  spanElement.innerText = "Begin New Story"
+  newDiv.appendChild(spanElement)
+
 }
 
 function newStoryHandler(){
@@ -66,7 +71,7 @@ function newStoryHandler(){
 function renderImageOptions(e){
   e.preventDefault();
 
-  //remove doodle-container if previously loaded
+  //remove doodle-container if previously rendered
   if (document.querySelector(".doodle-container")){
     document.querySelector(".doodle-container").remove()
   }
@@ -156,7 +161,7 @@ function renderZoomPost(post){
   //clear screen and create div element
   document.querySelector('.story-container').innerHTML = "";
   let zoomStory = document.createElement('div');
-  zoomStory.classList.add('center-screen', 'zoom-story');
+  zoomStory.classList.add('center-screen', 'zoom-story', "w3-animate-right");
   document.querySelector('.story-container').appendChild(zoomStory)
 
   //add image
@@ -167,7 +172,7 @@ function renderZoomPost(post){
 
   //add first line
   let opening = document.createElement('p');
-  opening.innerText = post.content + "..."
+  opening.innerText = post.content
   zoomStory.appendChild(opening);
 
   //create previous, new post, and forward buttons
@@ -312,7 +317,7 @@ function submitNewPost(event){
 
   postNewPost(body)
   .then(newPost => {
-    renderZoomPost(newPost);
+    renderZoomPost(newPost)
     patchOldPost(previousPostId, newPost.id, nextPostIds)
   })
 }
