@@ -66,6 +66,8 @@ function newStoryHandler(){
   form.appendChild(submit);
   form.addEventListener('submit', newStoryListener)
   container.appendChild(form);
+
+  renderImageOptions()
 }
 
 function renderImageOptions(e){
@@ -391,7 +393,7 @@ function playStory(){
   for (const i in storyIdOrder){
     setTimeout(function(){
       fetchPlayStory(storyIdOrder[i])
-    }, i * 2000)
+    }, i * 1000)
   }
 
     // fetchPost(storyIdOrder[i])
