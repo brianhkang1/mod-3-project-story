@@ -80,8 +80,8 @@ img {
 }
 
 [class^=story-div] img {
-  height: 90px;
   width: 90px;
+  height: 90px;
 }
 
 .row .col-9{

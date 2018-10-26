@@ -89,6 +89,7 @@ function renderImageOptions(e){
 function renderDoodle(doodle){
   let doodleImg = document.createElement("img")
   let doodleButton = document.createElement('button')
+  doodleButton.type = "button"
 
   doodleImg.src = doodle.img_url
   doodleImg.classList.add("doodle")
@@ -150,7 +151,6 @@ function renderStory(story){
     img.style.width = "90px"
     img.style.height = "90px"
   })
-
 
   // add image
   img.classList.add("story-image");
@@ -366,7 +366,6 @@ function theEnd(){
   document.querySelector('.story-container').appendChild(playStoryButton);
 
   let lastPostId = parseInt(event.currentTarget.dataset.finalPostId);
-  // let penultimatePostId = parseInt(event.currentTarget.dataset.penultimatePostId);
 
   storyIdOrder = [];
   return recursivePostFetch(lastPostId)

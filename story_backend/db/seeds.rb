@@ -22,13 +22,25 @@ Post.create(story_id: 5, content: "I like ice cream. The end", doodle_id: 45)
 Story.create(title: "A Tale of Two Tandem Bike Riders", doodle_id: 9)
 Post.create(story_id: 6, content: "It was the best of times, it was the worst of times", doodle_id: 9)
 
-Story.create(title: "Fight Club", doodle_id: 37)
-Post.create(story_id: 7, content: "The first rule of Fight Club is: You do NOT talk about Fight Club", doodle_id: 37)
+Story.create(title: "Fright Club", doodle_id: 37)
+Post.create(story_id: 7, content: "The first rule of Fright Club is: You do NOT talk about Fright Club", doodle_id: 37)
 
 Story.create(title: "Rude girls", doodle_id: 14)
 Post.create(story_id: 8, content: "Get in loser. We're going shopping", doodle_id: 14)
 
-Story.create(title: "Sk8ter Boi", doodle_id: 32)
+Story.create(title: "Sk8ter Boi", doodle_id: 20)
 Post.create(story_id: 9, content: "He was a boy", doodle_id: 33, next_post_ids: "[11]")
 Post.create(story_id: 9, content: "She was a girl", doodle_id: 3, prev_post_id: 10, next_post_ids: "[12]")
 Post.create(story_id: 9, content: "Can I make it anymore obvious", doodle_id: 18, prev_post_id: 11)
+
+Story.create(title: "Jebron Lames", doodle_id: 31)
+Post.create(story_id: 10, content: "The restless King made his Decision: it was time to take his talents to the West Coast", doodle_id: 31)
+
+Story.create(title: "Game of Groans", doodle_id: 6)
+Post.create(story_id: 11, content: "AUGH... why does everyone die in this book", doodle_id: 6)
+
+Story.create(title: "Shower muses", doodle_id: 25)
+Post.create(story_id: 12, content: "What happens when we die?", doodle_id: 25)
+
+Story.create(title: "Birdman", doodle_id: 32)
+Post.create(story_id: 13, content: "This was no ordinary electric scooter. This little fella had big plans for the world", doodle_id: 32)
