@@ -24,13 +24,13 @@ function renderNewStoryButton(){
   //add button to create new story inside div
   let newStoryButton = document.createElement('img');
   newStoryButton.src = "./doodles/writing.svg";
-  newStoryButton.addEventListener('click', newStoryHandler)
   newDiv.appendChild(newStoryButton);
   document.querySelector(".custom-header").appendChild(newDiv)
 
   let spanElement = document.createElement("span")
   spanElement.innerText = "Begin New Story"
   newDiv.appendChild(spanElement)
+  newDiv.addEventListener('click', newStoryHandler)
 
 }
 
@@ -52,12 +52,10 @@ function newStoryHandler(){
   firstPostInput.placeholder = "begin your story"
   form.appendChild(firstPostInput);
 
-  //add story + first post's doodle field
-  // let imgInput = document.createElement('button');
-  // imgInput.innerText = "click to add image";
-  // imgInput.classList.add("page-button")
-  // imgInput.addEventListener('click', renderImageOptions)
-  // form.appendChild(imgInput);
+  let pElement = document.createElement('p');
+  pElement.id = "select-an-image"
+  pElement.innerText = "select an image above:";
+  form.appendChild(pElement);
 
   //add submit field
   let submit = document.createElement('input');
@@ -71,9 +69,6 @@ function newStoryHandler(){
 }
 
 function renderImageOptions(e){
-  // e.preventDefault()
-  // e.stopPropagation()
-
   //remove doodle-container if previously rendered
   if (document.querySelector(".doodle-container")){
     document.querySelector(".doodle-container").remove()
@@ -96,6 +91,7 @@ function renderDoodle(doodle){
   let doodleButton = document.createElement('button')
 
   doodleImg.src = doodle.img_url
+  doodleImg.classList.add("doodle")
   doodleImg.dataset.doodleId = doodle.id
   doodleButton.classList.add("doodle-images");
   doodleButton.appendChild(doodleImg);
@@ -104,10 +100,15 @@ function renderDoodle(doodle){
 }
 
 function doodleHandler(e){
-  //when we click on a doodle, get its doodle id and set it as part of the dataset of the general form
-  document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
   e.preventDefault()
   e.stopPropagation()
+
+  //when we click on a doodle, get its doodle id and set it as part of the dataset of the general form
+  document.querySelector("form").dataset.doodleId = parseInt(e.currentTarget.dataset.doodleId)
+
+  let selectImageElement = document.querySelector("#select-an-image")
+  selectImageElement.innerHTML = ""
+  selectImageElement.innerHTML = `Selected image: <img src="${event.currentTarget.src}">`
 }
 
 function newStoryListener(e){
@@ -122,7 +123,7 @@ function newStoryListener(e){
   //after we POST to story API, we then POST to post API. After that we render the new post
   if (title === "" || newPostContent === "" || doodle_id === undefined){
     alert("please enter a title, a post, and select an image")
-  }else {
+  } else {
     postNewStory(title, doodle_id).then(newStory => {
       let body = {
         content: newPostContent,
@@ -132,7 +133,6 @@ function newStoryListener(e){
       postNewPost(body)
       .then(newPost => renderZoomPost(newPost))
     })
-
   }
 }
 
@@ -143,8 +143,8 @@ function renderStory(story){
   storyDiv.classList.add(`story-div-${story.id}`);
   document.querySelector('.story-container').appendChild(storyDiv)
   storyDiv.addEventListener("mouseover", function(){
-    img.style.width = "75px"
-    img.style.height = "75px"
+    img.style.width = "80px"
+    img.style.height = "80px"
   })
   storyDiv.addEventListener("mouseout", function(){
     img.style.width = "90px"
@@ -204,7 +204,7 @@ function createButtons(post){
   if (post.prev_post_id){
     let backButton = document.createElement('button');
     backButton.classList.add('page-button')
-    backButton.innerText = "previous page";
+    backButton.innerText = "go to previous page";
     backButton.classList.add('back-button')
 
     backButton.dataset.storyId = post.story.id;
@@ -216,6 +216,7 @@ function createButtons(post){
 
   //if this post doesn't have next-post-id's, then create a new post buton
   if (post.next_post_ids === null) {
+
     let createNewPostButton = document.createElement('button');
     createNewPostButton.innerText = "write what happens next";
     createNewPostButton.classList.add('new-post-button', 'page-button');
@@ -311,11 +312,10 @@ function newPost(){
   contentInput.placeholder = "Continue story"
   form.appendChild(contentInput);
 
-  // let imgInput = document.createElement('button');
-  // imgInput.innerText = "click to add image";
-  // imgInput.classList.add('add-image-button', 'page-button')
-  // imgInput.addEventListener('click', renderImageOptions)
-  // form.appendChild(imgInput);
+  let pElement = document.createElement('p');
+  pElement.id = "select-an-image"
+  pElement.innerText = "select an image above:";
+  form.appendChild(pElement);
 
   let submit = document.createElement('input');
   submit.type = "submit";
@@ -336,16 +336,16 @@ function submitNewPost(e){
   e.stopPropagation()
 
   let content = event.currentTarget.children[1].value;
-  let storyId = +event.currentTarget.children[2].dataset.storyId;
-  let previousPostId = +event.currentTarget.children[2].dataset.previousPostId;
-  let nextPostIds = event.currentTarget.children[2].dataset.nextPostIds;
+  let storyId = +event.currentTarget.children[3].dataset.storyId;
+  let previousPostId = +event.currentTarget.children[3].dataset.previousPostId;
+  let nextPostIds = event.currentTarget.children[3].dataset.nextPostIds;
   let doodleId = +event.currentTarget.dataset.doodleId;
 
   let body = {content: content, prev_post_id: previousPostId, story_id: storyId, doodle_id: doodleId}
-debugger
+
   if (content === "" || !doodleId){
     alert("please enter text to continue the story, and select an image")
-  }else {
+  } else {
     postNewPost(body)
     .then(newPost => {
       renderZoomPost(newPost)
@@ -388,6 +388,16 @@ function playStory(){
   let newDiv = document.createElement("div")
   newDiv.id = "playStoryDiv"
   newDiv.classList.add("horizontal-center")
+
+  let titleElement = document.createElement("div")
+  titleElement.classList.add("final", "slideshowPost")
+  titleElement.id = "slideshow-title"
+  newDiv.appendChild(titleElement)
+  fetchPost(storyIdOrder[0])
+    .then(post => {
+      titleElement.innerText = post.story.title.toUpperCase()
+    })
+
   document.querySelector('.story-container').appendChild(newDiv)
   // setInterval(fetchPlayStory, 2000)
   for (const i in storyIdOrder){

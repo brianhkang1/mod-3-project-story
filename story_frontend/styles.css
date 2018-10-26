@@ -3,9 +3,18 @@ body, button, input {
 }
 
 body{
-  border-style: solid;
-  border-radius: 10px;;
+  /* border-style: solid;
+  border-radius: 10px; */
+  max-width: 1440px;
   min-height: 720px;
+  background-image: url("https://stmed.net/sites/default/files/minimalism-wallpapers-25255-1455717.jpg");
+
+  /* https://wallpaper-house.com/data/out/10/wallpaper2you_418241.png */
+
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: cover; */
+  /* background-size: 1440px 1100px; */
 }
 
 .page-button:hover, #play-story:hover{
@@ -55,11 +64,12 @@ img {
   height: 50px;
   padding-top: 10px;
 }
-/*
-.header-img {
-  width: 50px;
-  height: 50px;
-  padding-top: 10px;
+
+/* #header-img {
+  border-style: outset;
+  border-radius: 10px;
+  padding: 5px;
+  border-width: 5px;
 } */
 
 [class^=story-div] {
@@ -84,25 +94,29 @@ div.col-9:hover{
 }
 
 #new-story-button {
-  padding: none;
+  padding: 5px;
   position: flex;
   float: right;
   display: inline;
   right: 0;
-  border-left-style: solid;
-  border-bottom-style: solid;
+  border-style: outset;
+  /* border-color: black; */
   border-radius: 10px;
+  border-width: 5px;
 }
 
 #new-story-button img{
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
 }
 
-#new-story-button img:hover {
-  height: 55px;
-  width: 55px;
+#new-story-button:hover {
   cursor: pointer;
+}
+
+button, input {
+  background-color: transparent;
+  color: black;
 }
 
 input[placeholder] {
@@ -111,6 +125,7 @@ input[placeholder] {
   border-radius: 10px;
   border-style: solid;
   margin: 5px;
+
 }
 
 input[placeholder]:focus {
@@ -120,7 +135,6 @@ input[placeholder]:focus {
 button, input[type=submit]{
   border: none;
   font-size: 20px;
-
 }
 
 .story-image{
@@ -129,6 +143,10 @@ button, input[type=submit]{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.story-image:hover{
+  cursor: pointer;
 }
 
 .zoom-story{
@@ -143,24 +161,7 @@ button, input[type=submit]{
 
 @keyframes slideFromBottom {
   from {
-    margin-top: 100%;
-    height: 300%;
-  }
-
-  to {
-    margin-top: 0%;
-    height: 100%;
-  }
-}
-
-.final{
-  animation-duration: 1s;
-  animation-name: slideFromBottomFinal;
-}
-
-@keyframes slideFromBottomFinal {
-  from {
-    margin-top: 100%;
+    margin-top: 30%;
     /* height: 300%; */
   }
 
@@ -170,17 +171,35 @@ button, input[type=submit]{
   }
 }
 
+.final{
+  animation-duration: 2s;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .story-container{
   /* margin-top: 25px; */
   margin-left: 25px;
   margin-right: 25px;
+}
 
+img.doodle{
+  opacity: 1 !important;
 }
 
 .doodle-images{
   width: 5px;
   height:5px;
-  /* margin: 5px; */
+  background-color: transparent;
 }
 
 .doodle-images:hover{
@@ -226,11 +245,12 @@ span{
 
 /*  this 'theEnd' thing is only rendering in a hacky way,
 because of the fetches in playStory*/
-/* #the-end{
-  position: fixed;
-  top: 80%;
-  left: 45%;
-} */
+#the-end{
+  border-style: outset;
+  border-radius: 10px;
+  border-color: black;
+  cursor: pointer;
+}
 
 #play-story{
   position: fixed;
@@ -249,20 +269,23 @@ because of the fetches in playStory*/
   left: 45%;
 } */
 
-.story-container {
-  min-height: 720px;
-}
-
 #header-title{
   position: absolute;
   top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 30px;
+  /* color: #898989; */
 }
 
-
+#slideshow-title{
+  font-size: 50px;
+}
 
 .slideshowPost{
   text-align: center;
+}
+
+::placeholder {
+  color:black;
 }

@@ -26,10 +26,13 @@ function fetchPlayStory(i){
       newDiv.appendChild(content)
       document.querySelector("#playStoryDiv").appendChild(newDiv);
 
-      let theEnd = document.createElement('p');
+      let theEnd = document.createElement('button');
       theEnd.classList.add("final")
       theEnd.id = "the-end"
-      theEnd.innerText = "\n\nthe end."
+      theEnd.innerText = "the end."
+      theEnd.addEventListener("click", function(){
+        renderStories()
+      })
       newDiv.appendChild(theEnd)
       document.querySelector("#playStoryDiv").appendChild(newDiv)
 
